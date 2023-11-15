@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(./assets/background-to-do-react.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+}
+
+
+
+.container {
+  height: 680px;
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-height: 400px; 
+  width: 100%;
+  align-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.btn-glass {
+ 
+  cursor: pointer; 
+  transition: all 0.3s; 
+  background: transparent;
+  padding: 1rem;
+  margin-right: 2rem;
+}
+
+/* .btn-glass:hover, .btn-glass-2:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0); 
+} */
+
+.btn-glass-2 {
+  cursor: pointer; 
+  transition: all 0.3s; 
+  background: transparent;
+  padding: 1rem;
+  margin-left: 2rem;
+  background: rgba(255, 255, 255, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-radius: 50%; 
+  width: 50px; 
+  height: 50px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  cursor: pointer; 
+  transition: background-color 0.3s;
+}
+
+.second-container {
+  position: relative;
+}
+
+
+
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)),
+              rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px; 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  max-width: 680px;
+  overflow: hidden; 
+}
+
+
+
+.notch-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+}
+
+.btn-glass-3, .btn-glass-2, .btn-glass {
+  border: transparent;
+}
+
+.btn-glass-3 {
+  background: transparent;
+}
+
+
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+
+}
+
+.digital-clock {
+  font-size: 48px; 
+  color: #000; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-weight: 200;
+  line-height: 0.5;
+
+ 
+}
+
+.clock-status {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Segoe UI';
+}
+
+.my-lists-container {
+  text-align: center;
+}
+
+.my-lists-container .card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: none;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 150px;
+}
+
+.my-lists-container .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.my-lists-container .card-title {
+  font-size: 1rem;
+}
+
+.icon-border {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+  border-radius: 30%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
