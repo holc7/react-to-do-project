@@ -20,11 +20,11 @@ body {
   height: 680px;
   display: flex;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  min-height: 400px; 
+  min-height: 400px;
   width: 100%;
   align-content: center;
   text-align: center;
@@ -155,6 +155,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+   
 }
 
 .my-lists-container .card-title {
@@ -162,10 +163,9 @@ body {
 }
 
 .icon-border {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #000;
   border-radius: 30%;
   width: 50px;
   height: 50px;
@@ -173,4 +173,78 @@ body {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  margin-left: 2.3rem;
+ 
+}
+
+
+.test-fa {
+  font-size: 24px;
+}
+
+
+/* FOR ACTIVE STATE WITH USESTATE! */
+
+.card-body-active {
+ background: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+
+.icon-border-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30%; 
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+  background: #3D3B60;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-left: 2.3rem;
+  box-shadow: 0 4px 8px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+}
+
+.fa-active {
+  color: white;
+  font-size: 24px;
+}
+
+/* FOR ACTIVE STATE WITH USESTATE! */
+
+/* .to-do-suggestor {
+  line-height: 4;
+} */
+
+.suggestion-container {
+  text-align: center;
+
+}
+
+.suggestion-heading {
+  /* Additional styling for your heading if needed */
+}
+
+.suggestion-text {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestion-text p {
+  font-weight: 600;
+  margin-top: 1rem;
 }

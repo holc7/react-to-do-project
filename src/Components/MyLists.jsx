@@ -4,13 +4,15 @@ import { faAdd, faUser, faTasksAlt, faCalendarAlt, faCheck, faDeleteLeft, faEdit
 
 const MyTasks = () => {
     return ( 
-        <div class="my-lists-container mt-5">
+        <div class="my-lists-container mt-4">
             <h4>My Lists</h4>
             <div class="row container-lists mt-4">
                 <div class="col-6 mb-4">
                 <div class="card text-center">
                     <div class="card-body">
-                    <FontAwesomeIcon icon={faTasksAlt} size="2xl"/>
+                      <div className="icon-border">
+                        <FontAwesomeIcon  className="test-fa" icon={faTasksAlt} size="2xl"/>
+                      </div> 
                     <h3 class="card-title">All Tasks</h3>
                     <p class="card-text">9 Items</p>
                     </div>
@@ -20,7 +22,7 @@ const MyTasks = () => {
                 <div className="card text-center">
                 <div className="card-body">
                     <div className="icon-border">
-                        <FontAwesomeIcon icon={faPersonChalkboard} size="2xl"/>
+                        <FontAwesomeIcon className="test-fa" icon={faPersonChalkboard} size="2xl"/>
                     </div>
                     <h3 className="card-title">Personal</h3>
                      <p className="card-text">9 Items</p>
@@ -33,7 +35,9 @@ const MyTasks = () => {
                 <div class="col-6 mb-4">
                 <div class="card text-center">
                     <div class="card-body">
-                    <FontAwesomeIcon icon={faSuitcase} size="2xl"/>
+                    <div className="icon-border">
+                        <FontAwesomeIcon className="test-fa" icon={faSuitcase} size="2xl"/>
+                        </div>   
                     <h3 class="card-title">Work</h3>
                     <p class="card-text">No Items</p>
                     </div>
@@ -42,7 +46,9 @@ const MyTasks = () => {
                 <div class="col-6 mb-4">
                 <div class="card text-center">
                     <div class="card-body">
-                    <FontAwesomeIcon icon={faAdd} size="2xl"/>
+                    <div className="icon-border">
+                        <FontAwesomeIcon className="test-fa" icon={faAdd} size="2xl"/>
+                        </div>    
                     <h3 class="card-title">Add List</h3>
                     <p class="card-text">9 Items</p>
                     </div>
