@@ -20,7 +20,7 @@ body {
   height: 680px;
   display: flex;
   justify-content: center;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -116,6 +116,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 1rem;
+  height: 1px;
+
 
 }
 
@@ -226,10 +228,6 @@ body {
 
 }
 
-.suggestion-heading {
-  /* Additional styling for your heading if needed */
-}
-
 .suggestion-text {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
@@ -248,3 +246,61 @@ body {
   font-weight: 600;
   margin-top: 1rem;
 }
+
+.status-weather-container {
+  height: 150px;
+}
+
+.new-task-container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.glassmorphic-search-bar form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2); 
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.glassmorphic-search-bar input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: #000000; 
+  caret-color: #4CAF50;
+}
+
+.glassmorphic-search-bar input[type="text"]::placeholder {
+  color: black; 
+}
+
+.glassmorphic-search-bar button {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+.glassmorphic-search-bar button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+.glassmorphic-search-bar input:focus,
+.glassmorphic-search-bar button:focus {
+  outline: none;
+}
+

@@ -9,6 +9,8 @@ import BottomNavBar from './BottomNavBar';
 import DigitalClock from './DigitalClock';
 import MyTasks from './MyLists';
 import TasksSuggestions from './TasksSuggestions';
+import HomepageTask from './HomepageTask';
+
 
 
 const MainContainer = () => {
@@ -18,9 +20,10 @@ const MainContainer = () => {
               <div className="second-container col-12 col-md-12 col-lg-12">
               <TopNavBar />
               <BottomNavBar />
-              <TasksSuggestions />
-              {/* <DigitalClock /> */}
-              <MyTasks />
+              {/* <TasksSuggestions /> */}
+              <DigitalClock />
+              {/* <MyTasks /> */}
+              <HomepageTask/>
               </div>
             </div>
           </div>
