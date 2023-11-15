@@ -18,8 +18,28 @@ export default function HomepageTask() {
         <div className='glassmorphic-search-bar'>
           <form onSubmit={formcontainer}>
             <input type='text' placeholder='Dont be shy....'></input>
-            <button type='submit'>Add</button>
+            <button className='quick-add-button' type='submit'>Add</button>
           </form>
+          <div className='quick-task-container'> 
+            <div class="b-example-divider"></div>
+            <div className='to-do-quick'>
+                <button className='quick-delete-button' type='submit'>Delete</button>
+            </div>
+            <div class="b-example-divider"></div>
+            <div className='to-do-quick'>
+                <button className='quick-delete-button' type='submit'>Delete</button>
+            </div>
+            <div class="b-example-divider"></div>
+            <div className='to-do-quick'>
+                <button className='quick-delete-button' type='submit'>Delete</button>
+            </div>
+            <div class="b-example-divider"></div>
+            <div className='to-do-quick'>
+                <button className='quick-delete-button' type='submit'>Delete</button>
+            </div>
+            
+          </div> 
+
           {/* <Lottie animationData={taskAnimation} style={{width: "300px", marginLeft: "2.5rem"}}/> */}
 
          

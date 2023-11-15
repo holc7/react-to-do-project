@@ -293,7 +293,7 @@ body {
 }
 
 .glassmorphic-search-bar button:hover {
-  background-color: #45a049;
+  background-color: #007BFE;
 }
 
 
@@ -304,3 +304,103 @@ body {
   outline: none;
 }
 
+.b-example-divider {
+  margin-top: 1rem;
+}
+
+.to-do-quick {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2); 
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  max-width: 500px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.quick-task-container {
+  max-height: 270px;
+  overflow-y: auto;
+}
+
+.quick-delete-button {
+  background-color: #FB3065 !important;
+}
+
+.quick-add-button {
+  background-color: #51C1E9 !important;
+}
+
+.menu-button {
+  cursor: pointer; 
+  transition: all 0.3s; 
+  background: transparent;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-radius: 50%; 
+  width: 20px; 
+  height: 20px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+
+
+.all-tasks-container {
+  margin-top: 10px;
+
+}
+
+.menu-container .dropdown-menu {
+  display: block; 
+  position: absolute; 
+  margin-top: 10px;
+  right: 0;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px;
+  z-index: 1000;
+  overflow: hidden;
+  width: 200px;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* Prevents clicking while hidden */
+}
+.menu-container.show .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: auto; /* Allows clicking when shown */
+}
+
+
+.menu-container {
+  position: relative;
+}
+
+.dropdown-text  {
+ margin-left: 10px;
+}
+
+.dropdown-text-priority  {
+  margin-left: 12px;
+ }
+
+ .dropdown-text-delete  {
+  margin-left: 12px;
+ }
+
+ .fa-priority {
+  margin-left: 2.5px;
+ }
