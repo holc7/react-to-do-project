@@ -4,7 +4,7 @@ import { faAdd, faUser, faTasksAlt, faCalendarAlt, faCheck, faDeleteLeft, faEdit
 
 const MyTasks = () => {
     return ( 
-        <div class="my-lists-container mt-5">
+        <div class="my-lists-container mt-4">
             <h4>My Lists</h4>
             <div class="row container-lists mt-4">
                 <div class="col-6 mb-4">
