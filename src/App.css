@@ -352,6 +352,10 @@ body {
   align-items: center;
 }
 
+.menu-button:focus {
+  background:#51C1E9; 
+}
+
 
 
 .all-tasks-container {
@@ -374,14 +378,14 @@ body {
   z-index: 1000;
   overflow: hidden;
   width: 200px;
-  transform: translateY(10px);
+  transform: translateY(-3px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none; /* Prevents clicking while hidden */
+  pointer-events: none;
 }
 .menu-container.show .dropdown-menu {
   opacity: 1;
   transform: translateY(0px);
-  pointer-events: auto; /* Allows clicking when shown */
+  pointer-events: auto; 
 }
 
 
@@ -404,3 +408,62 @@ body {
  .fa-priority {
   margin-left: 2.5px;
  }
+
+
+ .tasks-container {
+  background: transparent;
+  height: 460px;
+ }
+
+ 
+ .all-tasks-second-container h5 {
+  text-align: left;
+  margin-left: 10px;
+
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  font-weight: 300; /* Lighter font weight */
+ }
+
+ .all-tasks-second-container ul {
+ list-style: none;
+ padding-left: 0;
+ margin-left: 0;
+
+ }
+
+ .all-tasks-container h4 {
+  color: #18C76B;
+  margin-left: 10px;
+  
+ }
+
+ .task-time {
+  background: #51C1E9; 
+border-radius: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px); 
+border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  padding: 20px;
+ 
+}
+
+.task-time:active {
+  /* Styles to make the element look "pressed" */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Smaller shadow for depth */
+  transform: translateY(2px); /* Slightly move down the element */
+}
+
+.all-tasks-second-container {
+
+background: rgba(255, 255, 255, 0.2); 
+border-radius: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px); 
+border: 1px solid rgba(255, 255, 255, 0.3);
+padding: 10px;
+height: 450px;
+overflow-y: auto;
+
+}

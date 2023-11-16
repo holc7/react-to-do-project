@@ -24,7 +24,7 @@ const MainContainer = () => {
               {/* <TasksSuggestions /> */}
               {/* <DigitalClock /> */}
               <Alltasks />
-              <MyTasks />
+              {/* <MyTasks /> */}
               {/* <HomepageTask/> */}
             
               </div>
