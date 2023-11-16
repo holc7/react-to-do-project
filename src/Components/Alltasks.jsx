@@ -79,11 +79,13 @@ function TaskList({ tasksByDate, toggleComplete }) {
           <h5>{dateGroup.date}</h5>
           <ul>
             {dateGroup.items.map((task) => (
-              <li key={task.id} className="task-time d-flex justify-content-around mt-4">{task.completed ? 'completed' : ''}
-                <input type="checkbox" checked={task.completed} onChange={() => toggleComplete(task.id)} />
+              <li key={task.id} className="task-time d-flex justify-content-around mt-4">{task.completed ? '' : ''}
+                <input type="checkbox" checked={task.completed}  onChange={() => toggleComplete(task.id)}  />
+                <div className={task.completed ? "task-completed" : "span-container"}>
                 <span>{task.title}</span>
                 <span>{task.time}</span>
                 {/* Rest of the task details */}
+                </div>
               </li>
             ))}
           </ul>
@@ -92,3 +94,4 @@ function TaskList({ tasksByDate, toggleComplete }) {
     </div>
   );
 }
+
