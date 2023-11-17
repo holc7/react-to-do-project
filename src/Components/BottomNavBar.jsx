@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faCalendar, faUser, faAdd, faCalendarAlt, faCheck, faDeleteLeft, faEdit, faEyeDropper, faHome, faHomeAlt, faTrash, faTasks, faCogs } from '@fortawesome/free-solid-svg-icons';
-import Calendar from 'react-calendar';
 
-const BottomNavBar = ({ handleCalendar }) => {
-  console.log("handleCalendar prop:", handleCalendar);
+
+const BottomNavBar = ( ) => {
+
   return (  
       <div className="bottom-nav">
-          <button onClick={handleCalendar} type="button" className="btn-glass-3">
+          <button type="button" className="btn-glass-3">
             <FontAwesomeIcon icon={faCalendar}/>
           </button>
           

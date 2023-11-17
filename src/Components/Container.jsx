@@ -23,9 +23,11 @@ const MainContainer = () => {
               <BottomNavBar />
               {/* <TasksSuggestions /> */}
               {/* <DigitalClock /> */}
-              <Alltasks />
+              {/* <Alltasks /> */}
               {/* <MyTasks /> */}
+             
               {/* <HomepageTask/> */}
+            
             
               </div>
             </div>
