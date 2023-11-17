@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faUser, faTasksAlt, faCalendarAlt, faCheck, faDeleteLeft, faEdit, faEyeDropper, faHome, faHomeAlt, faTrash, faSuitcase, faPersonChalkboard, faJetFighter, faSchool, faExclamationTriangle, faMinus, faArrowCircleDown, faCircle, faSmile } from '@fortawesome/free-solid-svg-icons';
-
+import sentMessage from "../assets/send-mess.png"
 
 export default function CreateTask() {
 
@@ -14,14 +14,17 @@ export default function CreateTask() {
         <h4>Task name</h4> 
       <div className='glassmorphic-search-bar-cat' >
         <form onSubmit={formContainer}>
-            <input type='text' placeholder='Dont be shy....'></input>
-          </form>
+            <input type='text' placeholder='Add new task....'></input>
+            <button className='quick-add-button-add' type='submit'>
+                <img src={sentMessage} alt='sent-message' style={{ width: "30px"}}/>
+            </button>
+        </form>
       </div>
 
       <h5 className='category-text mt-4'>Categories</h5> 
       <div className='category-container'>
-        <div class="category-body-container">
-            <div className='category-separator mt-2 d-flex justify-content-evenly'>
+        <div className="category-body-container">
+            <div className='category-separator mt-2 d-flex justify-content-around'>
 
                     <div className="icon-border-cat">
                         <FontAwesomeIcon  className="test-fa-cat" icon={faSuitcase} size="2xl"/>
@@ -54,8 +57,8 @@ export default function CreateTask() {
 
         <h5 className='category-text mt-5'>Urgency</h5> 
       <div className='category-container'>
-        <div class="category-body-container">
-            <div className='category-separator mt-2 d-flex justify-content-evenly'>
+        <div className="category-body-container">
+            <div className='category-separator mt-2 d-flex justify-content-around'>
 
                     <div className="icon-border-cat-high">
                         <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>

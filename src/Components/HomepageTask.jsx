@@ -20,7 +20,7 @@ export default function HomepageTask() {
         <div className='glassmorphic-search-bar'>
           <form onSubmit={formContainer}>
             <input type='text' placeholder='Dont be shy....'></input>
-            <button className='quick-add-button' type='submit'></button>
+            <button className='quick-add-button' type='submit'>ADD</button>
           </form>
           <div className='quick-task-container'> 
             <div class="b-example-divider"></div>

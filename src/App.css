@@ -667,6 +667,7 @@ margin: 0;
 
   max-width: 500px;
   margin: auto;
+  width: 95%;
 
 }
 
@@ -678,6 +679,7 @@ margin: 0;
   border-radius: 10px;
   color: #000000; 
   caret-color: #4CAF50;
+
 }
 
 .glassmorphic-search-bar-cat input[type="text"]::placeholder {
@@ -702,4 +704,13 @@ margin: 0;
 .glassmorphic-search-bar-cat input:focus,
 .glassmorphic-search-bar-cat button:focus {
   outline: none;
+}
+
+.quick-add-button-add {
+  padding: 0px !important;
+  background-color: transparent !important;
+}
+
+.quick-add-button-add img {
+  margin-right: 15px;
 }
