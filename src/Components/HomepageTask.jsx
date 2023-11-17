@@ -1,12 +1,14 @@
 import React from 'react'
 import Lottie from 'lottie-react'
 import taskAnimation from "../assets/animations/task-animation.json"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 const TaskAnimation = () => {
     return <Lottie animationData={taskAnimation} />
 }
 
-const  formcontainer = (e) => {
+const  formContainer = (e) => {
     e.preventDefault()
 }
 
@@ -16,9 +18,9 @@ export default function HomepageTask() {
        <div className='new-task-container'>
           <h4>Create a quick task:</h4>
         <div className='glassmorphic-search-bar'>
-          <form onSubmit={formcontainer}>
+          <form onSubmit={formContainer}>
             <input type='text' placeholder='Dont be shy....'></input>
-            <button className='quick-add-button' type='submit'>Add</button>
+            <button className='quick-add-button' type='submit'></button>
           </form>
           <div className='quick-task-container'> 
             <div class="b-example-divider"></div>

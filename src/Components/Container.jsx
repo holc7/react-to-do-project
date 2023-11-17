@@ -11,6 +11,7 @@ import MyTasks from './MyLists';
 import TasksSuggestions from './TasksSuggestions';
 import HomepageTask from './HomepageTask';
 import Alltasks from './Alltasks';
+import CreateTask from './CreateTask';
 
 
 
@@ -25,7 +26,7 @@ const MainContainer = () => {
               {/* <DigitalClock /> */}
               {/* <Alltasks /> */}
               {/* <MyTasks /> */}
-             
+             <CreateTask />
               {/* <HomepageTask/> */}
             
             
