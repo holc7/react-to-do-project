@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faSort, faCheckCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faClock, faSort, faCheckCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export default function Alltasks() {
   const [showMenu, setShowMenu] = useState(false);
@@ -9,10 +9,10 @@ export default function Alltasks() {
       date: "Today",
       items: [
         { id:1, title: "Google project", time: "10:00 AM", subtask: "Website project", completed: false },
+        { id:4, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
         { id:3, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
-        { id:3, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
-        { id:3, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
-        { id:3, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
+        { id:11, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
+        { id:12, title : "Meta Project", time:"12:00 AM", subtask:"Google project", completed: false},
       ],
     },
     {
@@ -25,7 +25,7 @@ export default function Alltasks() {
 
   ]);
 
-  // Function to toggle task completion
+  
   const toggleComplete = (taskId) => {
     setTasks(tasks => tasks.map(dateGroup => ({
       ...dateGroup,
@@ -35,7 +35,6 @@ export default function Alltasks() {
     })));
   };
 
-  // Render the TaskList component, passing tasks as a prop
   return (
     <div className='text-sort-container'>
       <div className="header-container d-flex justify-content-between align-items-center">
@@ -80,9 +79,10 @@ function TaskList({ tasksByDate, toggleComplete }) {
           <ul>
             {dateGroup.items.map((task) => (
               <li key={task.id} className="task-time d-flex justify-content-around mt-4">{task.completed ? '' : ''}
-                <input type="checkbox" checked={task.completed}  onChange={() => toggleComplete(task.id)}  />
-                <div className={task.completed ? "task-completed" : "span-container"}>
-                <span>{task.title}</span>
+                <input type="checkbox"  checked={task.completed}  onChange={() => toggleComplete(task.id)}  />
+                <div className={task.completed ? "task-completed"  : "span-container"}>
+                    {/* {task.completed && <FontAwesomeIcon icon={faCheck} className='check-icon' />} */}
+                <span>{task.title} </span>
                 <span>{task.time}</span>
                 {/* Rest of the task details */}
                 </div>
