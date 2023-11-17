@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAdd, faSuitcase, faSchool, faJetFighter,
-  faExclamationTriangle, faMinus, faArrowCircleDown, faSmile
+  faExclamationTriangle, faMinus, faArrowCircleDown, faSmile, faAirFreshener, faUmbrellaBeach
 } from '@fortawesome/free-solid-svg-icons';
 import sentMessage from "../assets/send-mess.png";
 import Calendar from 'react-calendar';
@@ -41,110 +41,135 @@ export default function CreateTask() {
   };
 
   return (
-    <div className='create-task-container d-flex flex-column'>
-      <h4>Task name</h4>
-      <div className='glassmorphic-search-bar-cat'>
-        <form onSubmit={handleSubmit}>
-          <input 
-            onChange={handleTaskChange} 
-            onFocus={() => setIsCalendarVisible(true)} 
-            value={task} 
-            type='text' 
-            placeholder='Add new task....'
-          />
-          {/* <input 
-            type="text" 
-            value={dueDate.toLocaleDateString()}  
-            readOnly 
-            onClick={() => setIsCalendarVisible(!isCalendarVisible)} 
-            placeholder='Due date'
-          /> */}
-          {isCalendarVisible && (
-            <Calendar 
-              onChange={handleDateChange} 
-              value={dueDate} 
-            />
-          )}
-           <button className='quick-add-button-add' type='submit'>
-            <img src={sentMessage} alt='sent-message' style={{ width: "30px"}}/>
-          </button>
-        </form>
-      </div>
+            <div>
+              <div className='create-task-container d-flex flex-column'>
+                <h4>Task name</h4>
+                <div className='glassmorphic-search-bar-cat'>
+                    <form onSubmit={handleSubmit}>
+                    <input 
+                        onChange={handleTaskChange} 
+                        onFocus={() => setIsCalendarVisible(true)} 
+                        value={task} 
+                        type='text' 
+                        placeholder='Add new task....'
+                    />
+                    {/* <input 
+                        type="text" 
+                        value={dueDate.toLocaleDateString()}  
+                        readOnly 
+                        onClick={() => setIsCalendarVisible(!isCalendarVisible)} 
+                        placeholder='Due date'
+                    /> */}
+                    {isCalendarVisible && (
+                        <Calendar 
+                        onChange={handleDateChange} 
+                        value={dueDate} 
+                        />
+                    )}
+                    <button className='quick-add-button-add' type='submit'>
+                        <img src={sentMessage} alt='sent-message' style={{ width: "30px"}}/>
+                    </button>
+                    </form>
+                </div>
 
-      <h5 className='category-text mt-3'>Categories</h5> 
-      <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar"}>
-        <div className="category-body-container">
-            <div className='category-separator mt-1 d-flex justify-content-around'>
+                <h5 className='category-text mt-3'>Categories</h5> 
+                <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar"}>
+                    <div className="category-body-container">
+                        <div className='category-separator mt-1 d-flex justify-content-around'>
 
-                    <div className="icon-border-cat">
-                        <FontAwesomeIcon  className="test-fa-cat" icon={faSuitcase} size="2xl"/>
-                        <div className="icon-text">WORK</div>
-                      </div>
-                      <div className="icon-border-cat">
-                        <FontAwesomeIcon  className="test-fa-cat" icon={faSchool} size="2xl"/>
-                        <div className="icon-text-school">SCHOOL</div>
-                      </div>
+                                <div className="icon-border-cat">
+                                    <FontAwesomeIcon  className="test-fa-cat" icon={faSuitcase} size="2xl"/>
+                                    <div className="icon-text">WORK</div>
+                                </div>
+                                <div className="icon-border-cat">
+                                    <FontAwesomeIcon  className="test-fa-cat" icon={faSchool} size="2xl"/>
+                                    <div className="icon-text-school">SCHOOL</div>
+                                </div>
+                
+                                <div className="icon-border-cat">
+                                    <FontAwesomeIcon  className="test-fa-cat" icon={faJetFighter} size="2xl"/>
+                                    <div className="icon-text-holiday">HOLIDAY</div>
+                                </div>
+                                <div className="icon-border-cat-add">
+                                    <FontAwesomeIcon  className="test-fa-cat-add" icon={faAdd} size="2xl"/>
+                                    <div className="icon-text">ADD</div>
+                                </div>
+                                
+                                </div>      
+                                
+
+
+
+
+
+
+                        </div>       
+                    </div>
+
+                    <h5 className='category-text'>Urgency</h5> 
+                <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar"}>
+                    <div className="category-body-container">
+                        <div className='category-separator mt-2 d-flex justify-content-around'>
+
+                                <div className="icon-border-cat-high">
+                                    <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
+                                    <div className="icon-text">HIGH</div>
+                                </div>
+                                <div className="icon-border-cat-medium">
+                                    <FontAwesomeIcon  className="test-fa-cat-minus" icon={faMinus} size="2xl"/>
+                                    <div className="icon-text-medium">MEDIUM</div>
+                                </div>
+                
+                                <div className="icon-border-cat-low">
+                                    <FontAwesomeIcon  className="test-fa-cat-low" icon={faArrowCircleDown} size="2xl"/>
+                                    <div className="icon-text-low">LOW</div>
+                                </div>
+                                <div className="icon-border-cat-add">
+                                    <FontAwesomeIcon  className="test-fa-cat-add" icon={faSmile} size="2xl"/>
+                                    <div className="icon-text">ZERO</div>
+                                </div>
+                                
+                                </div>      
+                                
+
+
+
+
+
+
+                        </div>       
+                    </div>
+                
+                            
+
+
+                </div>
+
+                <div class="second-all-tasks-container d-flex justify-content-around ">
+                    <div class="card-all-task-1 mt-5 ">
+
+                        <div className="icon-border-all-task-1 d-flex justify-content-between">
+                            <FontAwesomeIcon className="test-fa-tasks" icon={faSuitcase} size="2xl"/>
+                            <FontAwesomeIcon className="test-fa-tasks" icon={faUmbrellaBeach} size="2xl"/>
+                            <FontAwesomeIcon className="test-fa-tasks" icon={faJetFighter} size="2xl"/>
+                            <FontAwesomeIcon className="test-fa-tasks" icon={faSchool} size="2xl"/>
+                            </div>   
+                        <h3 class="card-title-all-task-1">All tasks</h3>
+                        </div>
+
+                    <div class="card-all-task-2 ">
+                        <div className="icon-border-all-task-2">
+                            <FontAwesomeIcon className="test-fa" icon={faSuitcase} size="2xl"/>
+                            
+                            </div>   
+                        <h4 class="card-title-all-task-2">Work</h4>
+                        </div>
+                       
+                    </div>
+            </div>    
+
+
+
     
-                      <div className="icon-border-cat">
-                        <FontAwesomeIcon  className="test-fa-cat" icon={faJetFighter} size="2xl"/>
-                        <div className="icon-text-holiday">HOLIDAY</div>
-                      </div>
-                      <div className="icon-border-cat-add">
-                        <FontAwesomeIcon  className="test-fa-cat-add" icon={faAdd} size="2xl"/>
-                        <div className="icon-text">ADD</div>
-                      </div>
-                      
-                    </div>      
-                     
-
-
-
-
-
-
-            </div>       
-        </div>
-
-        <h5 className='category-text'>Urgency</h5> 
-      <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar"}>
-        <div className="category-body-container">
-            <div className='category-separator mt-2 d-flex justify-content-around'>
-
-                    <div className="icon-border-cat-high">
-                        <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
-                        <div className="icon-text">HIGH</div>
-                      </div>
-                      <div className="icon-border-cat-medium">
-                        <FontAwesomeIcon  className="test-fa-cat-minus" icon={faMinus} size="2xl"/>
-                        <div className="icon-text-medium">MEDIUM</div>
-                      </div>
-    
-                      <div className="icon-border-cat-low">
-                        <FontAwesomeIcon  className="test-fa-cat-low" icon={faArrowCircleDown} size="2xl"/>
-                        <div className="icon-text-low">LOW</div>
-                      </div>
-                      <div className="icon-border-cat-add">
-                        <FontAwesomeIcon  className="test-fa-cat-add" icon={faSmile} size="2xl"/>
-                        <div className="icon-text">ZERO</div>
-                      </div>
-                      
-                    </div>      
-                     
-
-
-
-
-
-
-            </div>       
-        </div>
-        
-
-
-
-
-
-    </div>
-
   )
 }
