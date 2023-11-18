@@ -146,9 +146,9 @@ export default function CreateTask() {
                 </div>
 
                 <div class="second-all-tasks-container d-flex justify-content-around ">
-                    <div class="card-all-task-1 mt-5 ">
+                    <div class={!isCalendarVisible ? "card-all-task-1 mt-5" : "IT IS SIMPLE"}>
 
-                        <div className="icon-border-all-task-1 d-flex justify-content-between">
+                        <div className={!isCalendarVisible ? "icon-border-all-task-1 d-flex justify-content-between" : "WHAAAAAAAT"}>
                             <FontAwesomeIcon className="test-fa-tasks" icon={faSuitcase} size="2xl"/>
                             <FontAwesomeIcon className="test-fa-tasks" icon={faUmbrellaBeach} size="2xl"/>
                             <FontAwesomeIcon className="test-fa-tasks" icon={faJetFighter} size="2xl"/>
@@ -157,7 +157,7 @@ export default function CreateTask() {
                         <h3 class="card-title-all-task-1">All tasks</h3>
                         </div>
 
-                    <div class="card-all-task-2 ">
+                    <div className={!isCalendarVisible ? "card-all-task-2" : ""}>
                         <div className="icon-border-all-task-2">
                             <FontAwesomeIcon className="test-fa" icon={faSuitcase} size="2xl"/>
                             

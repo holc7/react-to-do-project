@@ -273,6 +273,15 @@ body {
   font-size: 24px;
 }
 
+.card-title-all-task-2 {
+  margin-top: 55px;
+  
+}
+
+.icon-border-all-task-2 {
+  position: absolute;
+  top: 25%;
+}
 
 /* FOR ACTIVE STATE WITH USESTATE! */
 
