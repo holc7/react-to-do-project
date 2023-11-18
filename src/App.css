@@ -421,6 +421,7 @@ body {
   width: 90%;
   position: relative;
   z-index: -1;
+  cursor: pointer;
 }
 /* 
 display: flex;
@@ -786,6 +787,7 @@ margin: 0;
   max-width: 500px;
   margin: auto;
   width: 95%;
+  
 
 }
 
@@ -837,8 +839,8 @@ margin: 0;
   margin: auto;
   width: 90%;
   position: relative;
-  z-index: -1;
 
+cursor: pointer;
 }
 
 .glassmorphic-search-bar-cat-quick input[type="text"] {
@@ -849,6 +851,7 @@ margin: 0;
   border-radius: 10px;
   color: #000000; 
   caret-color: #4CAF50;
+  z-index: 10;
 
 }
 
@@ -1028,7 +1031,7 @@ margin: 0;
   background: white;
   border-radius: 8px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1000; 
+ 
   padding: 3rem 3rem;
   width: 363px; 
   height: 270px;
@@ -1036,4 +1039,8 @@ margin: 0;
 
 .column-task-menu {
   gap: 10px;
+}
+
+.glassmorphic-search-bar-cat-quick {
+ 
 }
