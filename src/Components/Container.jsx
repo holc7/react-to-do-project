@@ -11,6 +11,7 @@ import MyTasks from './MyLists';
 import TasksSuggestions from './TasksSuggestions';
 import HomepageTask from './HomepageTask';
 import Alltasks from './Alltasks';
+import CreateTask from './CreateTask';
 
 
 
@@ -20,12 +21,14 @@ const MainContainer = () => {
             <div className="row justify-content-center">
               <div className="second-container col-12 col-md-12 col-lg-12">
               <TopNavBar />
-              <BottomNavBar />
+              <BottomNavBar/>
               {/* <TasksSuggestions /> */}
-              {/* <DigitalClock /> */}
-              <Alltasks />
+              <DigitalClock />
+              {/* <Alltasks /> */}
               {/* <MyTasks /> */}
-              {/* <HomepageTask/> */}
+             {/* <CreateTask /> */}
+              <HomepageTask/>
+            
             
               </div>
             </div>
