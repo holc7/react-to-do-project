@@ -16,21 +16,28 @@ import { useState } from 'react';
 
 const MainContainer = () => {
 
-  const [quickTask, setQuickTask] = useState("");
+  const [quickTasks, setQuickTasks] = useState([]);
+  const [currentTask, setCurrentTask] = useState("");
+  
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleQuickTask(currentTask);
+    setCurrentTask("");
+  }
 
 
 
 
-const  handleQuickTask = (e) => {
-    e.preventDefault()
-    if (quickTask.trim() === "") {
-      alert("Please type something!")
-    } else {
-      console.log("This si the quick task:", quickTask)
-      setQuickTask("");
-    }
-}
+  const handleQuickTask = (newTask) => {
+  if (newTask.trim() === "") {
+    alert("Please type something!!!");
+  } else {
+    setQuickTasks([...quickTasks, newTask]);
+    
+  }
+};
 
+  
 
 
         return ( 
@@ -38,13 +45,13 @@ const  handleQuickTask = (e) => {
             <div className="row justify-content-center">
               <div className="second-container col-12 col-md-12 col-lg-12">
               <TopNavBar />
-              <BottomNavBar  quickTask={quickTask} setQuickTask={setQuickTask} handleQuickTask={handleQuickTask} />
+              <BottomNavBar  quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask}  currentTask={currentTask}  />
               {/* <TasksSuggestions /> */}
               <DigitalClock />
               {/* <Alltasks /> */}
               {/* <MyTasks /> */}
              {/* <CreateTask /> */}
-              <HomepageTask quickTask={quickTask} setQuickTask={setQuickTask} handleQuickTask={handleQuickTask} />
+              <HomepageTask quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask} />
             
             
               </div>

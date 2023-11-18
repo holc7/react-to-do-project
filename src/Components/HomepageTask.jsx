@@ -10,26 +10,37 @@ const TaskAnimation = () => {
   return <Lottie animationData={taskAnimation} />
 }
 
-export default function HomepageTask({ quickTask, setQuickTask, handleQuickTask }) {
+export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSubmit }) {
+
+
   
-
-
   return (
-    <div>
-       <div className='new-task-container'>
-          <h4  >Create a quick task:</h4>
-        <div className='glassmorphic-search-bar-cat-quick mt-2'>
-          <form onSubmit={handleQuickTask}>
-            <input value={quickTask}  onChange={(e) => setQuickTask (e.target.value)} type='text' placeholder='Add a quick task...'></input>
-            <img onClick={handleQuickTask}  src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
+    <div className='new-task-container'>
+      <h4>Create a quick task:</h4>
+      <div className='glassmorphic-search-bar-cat-quick mt-2'>
+        <form onSubmit={handleFormSubmit}>
+          <input 
+            name="quickTask" 
+            onChange={(e) => setCurrentTask(e.target.value)}
+            type='text' 
+            placeholder='Add a quick task...'
+          />
+          <img onClick={handleFormSubmit} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
           </form>
-          <div className='quick-task-container'> 
-            <div className="b-example-divider"></div>
-            <div className='to-do-quick' onClick={() => console.log("It is clicked!")}>
-            <img onClick={() => console.log("It is clicked!")} src={trashIcon} alt='sent-message' style={{ width: "30px"}}/>
+        <div className='quick-task-container'>
+          {quickTasks.map((task, index) => (
+            <div key={index} className='to-do-quick mt-2'>
+              <p>{task}</p>
+              <img src={trashIcon} alt='Delete task' style={{ width: "30px"}}/>
             </div>
+          ))}
+
+          
+
+  
+      
             <div className="b-example-divider"></div>
-            <div className='to-do-quick' onClick={() => console.log("It is clicked!")}>
+            <div className='to-do-quick' >
             <img src={trashIcon} alt='sent-message' style={{ width: "30px"}}/>
             </div>
             
@@ -45,7 +56,6 @@ export default function HomepageTask({ quickTask, setQuickTask, handleQuickTask 
 
 
 
-       </div>
 
 
 

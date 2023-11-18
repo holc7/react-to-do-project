@@ -6,7 +6,7 @@ import taskAnimated from "../assets//icons8-todo-list.gif";
 
 
 
-const BottomNavBar = ({ quickTask, setQuickTask, handleQuickTask}) => {
+const BottomNavBar = ({ quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask}) => {
   const [taskMenu, setTaskmenu] = useState(false)
   
 
@@ -29,11 +29,11 @@ const BottomNavBar = ({ quickTask, setQuickTask, handleQuickTask}) => {
                     <h5>Add new task or a reminder </h5>
                     <p>Be productive today 😛</p>
                     <div className='glassmorphic-search-bar-cat-task-menu'>
-                      <form onSubmit={handleQuickTask} >
-                          <input onChange={(e) => setQuickTask(e.target.value)} type='text' placeholder='Add a quick task...'></input>
-                          <img onClick={handleQuickTask} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
-                      </form>
-                    </div>
+                    <form onSubmit={(e) => { e.preventDefault(); handleQuickTask(currentTask); }}>
+                      <input onChange={(e) => setCurrentTask(e.target.value)} value={currentTask} type='text' placeholder='Add a quick task...'></input>
+                      <img onClick={(e) => { e.preventDefault(); handleQuickTask(currentTask); }} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
+                    </form>
+                        </div>
                   </div>  
                 </div>
               
