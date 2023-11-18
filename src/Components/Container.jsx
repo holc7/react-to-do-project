@@ -18,6 +18,7 @@ const MainContainer = () => {
 
   const [quickTasks, setQuickTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
+  const [mainTasks, setMainTasks] = useState("");
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +38,7 @@ const MainContainer = () => {
   }
 };
 
+
   
 
 
@@ -45,13 +47,13 @@ const MainContainer = () => {
             <div className="row justify-content-center">
               <div className="second-container col-12 col-md-12 col-lg-12">
               <TopNavBar />
-              <BottomNavBar  quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask}  currentTask={currentTask}  />
+              <BottomNavBar  quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask}  currentTask={currentTask} setQuickTasks={setQuickTasks} />
               {/* <TasksSuggestions /> */}
-              <DigitalClock />
+              {/* <DigitalClock /> */}
               {/* <Alltasks /> */}
               {/* <MyTasks /> */}
-             {/* <CreateTask /> */}
-              <HomepageTask quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask} />
+             <CreateTask />
+              {/* <HomepageTask quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask} setQuickTasks={setQuickTasks} /> */}
             
             
               </div>

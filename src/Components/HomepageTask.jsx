@@ -10,9 +10,14 @@ const TaskAnimation = () => {
   return <Lottie animationData={taskAnimation} />
 }
 
-export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSubmit }) {
+export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSubmit, setQuickTasks }) {
+  
 
+  const handleTaskDelete = (index) => {
+    setQuickTasks(quickTasks.filter((_, i) => i !== index))
+  };
 
+  
   
   return (
     <div className='new-task-container'>
@@ -29,9 +34,9 @@ export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSub
           </form>
         <div className='quick-task-container'>
           {quickTasks.map((task, index) => (
-            <div key={index} className='to-do-quick mt-2'>
-              <p>{task}</p>
-              <img src={trashIcon} alt='Delete task' style={{ width: "30px"}}/>
+           <div key={index} className='to-do-quick mt-2'>
+              <p style={{marginTop : "15px"}}>{task}</p>
+              <img src={trashIcon} alt='Delete task' style={{ width: "30px", marginRight: "5px", textAlign: "center"}} onClick={() => handleTaskDelete(index)}/>
             </div>
           ))}
 
@@ -39,17 +44,13 @@ export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSub
 
   
       
-            <div className="b-example-divider"></div>
-            <div className='to-do-quick' >
-            <img src={trashIcon} alt='sent-message' style={{ width: "30px"}}/>
-            </div>
-            
+     
         
             
             
           </div> 
-
-          {/* <Lottie animationData={taskAnimation} style={{width: "300px", marginLeft: "2.5rem"}}/> */}
+            {quickTasks.length === 0 && <Lottie  animationData={taskAnimation}  style={{width: "280px", marginLeft:"2.5rem"}}/>}
+         
 
          
         </div>    
