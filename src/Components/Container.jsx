@@ -21,13 +21,13 @@ const MainContainer = () => {
             <div className="row justify-content-center">
               <div className="second-container col-12 col-md-12 col-lg-12">
               <TopNavBar />
-              <BottomNavBar />
+              <BottomNavBar/>
               {/* <TasksSuggestions /> */}
-              {/* <DigitalClock /> */}
+              <DigitalClock />
               {/* <Alltasks /> */}
               {/* <MyTasks /> */}
-             <CreateTask />
-              {/* <HomepageTask/> */}
+             {/* <CreateTask /> */}
+              <HomepageTask/>
             
             
               </div>

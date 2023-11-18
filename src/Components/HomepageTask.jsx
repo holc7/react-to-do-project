@@ -3,6 +3,8 @@ import Lottie from 'lottie-react'
 import taskAnimation from "../assets/animations/task-animation.json"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
+import sentMessage from "../assets/send-mess.png";
+import trashIcon from "../assets/icons8-trash.svg"
 
 const TaskAnimation = () => {
     return <Lottie animationData={taskAnimation} />
@@ -17,28 +19,21 @@ export default function HomepageTask() {
     <div>
        <div className='new-task-container'>
           <h4>Create a quick task:</h4>
-        <div className='glassmorphic-search-bar'>
+        <div className='glassmorphic-search-bar-cat-quick mt-2'>
           <form onSubmit={formContainer}>
-            <input type='text' placeholder='Dont be shy....'></input>
-            <button className='quick-add-button' type='submit'>ADD</button>
+            <input type='text' placeholder='Add a quick task...'></input>
+            <img src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
           </form>
           <div className='quick-task-container'> 
-            <div class="b-example-divider"></div>
+            <div className="b-example-divider"></div>
             <div className='to-do-quick'>
-                <button className='quick-delete-button' type='submit'>Delete</button>
+            <img src={trashIcon} alt='sent-message' style={{ width: "30px"}}/>
             </div>
-            <div class="b-example-divider"></div>
+            <div className="b-example-divider"></div>
             <div className='to-do-quick'>
-                <button className='quick-delete-button' type='submit'>Delete</button>
+            <img src={trashIcon} alt='sent-message' style={{ width: "30px"}}/>
             </div>
-            <div class="b-example-divider"></div>
-            <div className='to-do-quick'>
-                <button className='quick-delete-button' type='submit'>Delete</button>
-            </div>
-            <div class="b-example-divider"></div>
-            <div className='to-do-quick'>
-                <button className='quick-delete-button' type='submit'>Delete</button>
-            </div>
+            
             
           </div> 
 
