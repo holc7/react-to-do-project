@@ -21,7 +21,6 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
 
 
 
-
   const handleDateChange = (date) => {
     console.log("Selected Date:", date); 
 
@@ -163,9 +162,10 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
 
                 <div className="second-all-tasks-container d-flex justify-content-around ">
                     <div className={
-                        `${!isCalendarVisible ? "card-all-task-1 mt-5" : "IT IS SIMPLE"}
-                        ${!isCalendarVisible ? "card-all-task-1-new-task" : "" }
+                        `${!isCalendarVisible ? "card-all-task-1 mt-5" : "full-hidden"}
+                      
                         ${isNewTaskAdded ? "card-all-task-1-new-task" : ""}`
+                  
                     
                     }>
 

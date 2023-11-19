@@ -185,7 +185,7 @@ body {
   margin-top: 30px !important;
 }
 
-.card-all-task-1-new-task {
+/* .card-all-task-1-new-task {
   background: #51C1E9;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -197,17 +197,49 @@ body {
   text-align: left;
   display: flex;
   flex-direction: column;
-  
+  animation: pulse 5s ease-in-out;
   margin-top: 30px !important;
+}  */
+
+
+
+.card-all-task-1-new-task { 
+  animation: pulse 5s ease-in-out;
 }
+
+@keyframes pulse {
+  0%, 20%, 100% {
+    background-color: #51C1E9; 
+  }
+  10%, 30%, 50%, 70%, 90% {
+    background-color: #FFFFFF; 
+  }
+  40%, 60%, 80% {
+    background-color: #51C1E9; 
+  }
+}
+
 .card-all-task-1-new-task .test-fa-tasks {
   color: #000;
 }
 
+.full-hidden {
+  display: none;
+}
 
 
 .card-all-task-1 {
   padding: 1.3rem 3.3rem;
+}
+.edit-icon, .trash-icon {
+  cursor: pointer;
+  gap: 20px;
+  
+}
+
+.edit-delete-icon {
+  gap: 20px;
+  display: flex;
 }
 
 .card-all-task-2 {

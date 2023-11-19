@@ -3,6 +3,7 @@ import { faCog, faCalendar, faUser, faAdd, faCalendarAlt, faCheck, faDeleteLeft,
 import { useState } from 'react';
 import sentMessage from "../assets/send-mess.png";
 import taskAnimated from "../assets//icons8-todo-list.gif";
+import allTaskIcons from "../assets/icons8-to-do-32.png";
 
 
 
@@ -15,7 +16,8 @@ const BottomNavBar = ({ quickTask, setQuickTask, handleQuickTask, setCurrentTask
   return (  
       <div className="bottom-nav">
           <button type="button" className="btn-glass-3">
-            <FontAwesomeIcon icon={faCalendar}/>
+          <img src={allTaskIcons} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
+
           </button>
           
           <div className="notch">

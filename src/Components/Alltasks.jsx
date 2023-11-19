@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faSort, faCheckCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {faEdit, faClock, faSort, faCheckCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import sentMessage from "../assets/send-mess.png";
 
-export default function Alltasks({ tasks }) {
+
+export default function Alltasks({ handleMainTaskDelete ,tasks }) {
   const [showMenu, setShowMenu] = useState(false);
   const  [taskDropdown, setTaskDropdown] = useState(false)
+  
 
 
   return (
@@ -41,15 +43,19 @@ export default function Alltasks({ tasks }) {
     <div>
       <h5>Today</h5>
       <ul>
-      {Array.isArray(tasks) && tasks.map(task => (
-        <li key={task.id} className={`task-time mt-2 urgency-${task.urgency ? task.urgency.toLowerCase() : 'none'}`}>
-        <div className="span-container">
-            <p  className='task-title' >{task.title}</p>
-            <p className='task-date'>{task.dueDate}</p>
-            <p className='task-category'>{task.category}</p>
-          </div>
-        </li>
-          ))}
+      {Array.isArray(tasks) && tasks.map((task, index) => (
+  <li key={task.id} className={`task-time mt-2 urgency-${task.urgency ? task.urgency.toLowerCase() : 'none'}`}>
+    <div className="span-container">
+      <p className='task-title'>{task.title}</p>
+      <p className='task-date'>{task.dueDate}</p>
+      <p className='task-category'>{task.category}</p>
+    </div>
+    <div className='edit-delete-icon'>
+      <FontAwesomeIcon icon={faEdit} className="edit-icon" />
+      <FontAwesomeIcon onClick={() => handleMainTaskDelete(index)} icon={faTrash} className="trash-icon" />
+    </div>
+  </li>
+))}
       </ul>
     </div>
   </div>

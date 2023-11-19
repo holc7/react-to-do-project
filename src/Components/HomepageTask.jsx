@@ -10,12 +10,9 @@ const TaskAnimation = () => {
   return <Lottie animationData={taskAnimation} />
 }
 
-export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSubmit, setQuickTasks }) {
+export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSubmit, setQuickTasks, handleTaskDelete }) {
   
 
-  const handleTaskDelete = (index) => {
-    setQuickTasks(quickTasks.filter((_, i) => i !== index))
-  };
 
   
   
