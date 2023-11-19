@@ -19,6 +19,7 @@ const MainContainer = () => {
   const [quickTasks, setQuickTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
   const [mainTasks, setMainTasks] = useState("");
+  const [isNewTaskAdded, setIsNewTaskAdded] = useState(false);
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +42,8 @@ const MainContainer = () => {
 
   const addMainTask = (newMainTask) => {
     setMainTasks([...mainTasks, newMainTask])
+    setIsNewTaskAdded(true);
+
   }
 
 
@@ -52,9 +55,9 @@ const MainContainer = () => {
               <BottomNavBar  quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask}  currentTask={currentTask} setQuickTasks={setQuickTasks} />
               {/* <TasksSuggestions /> */}
               {/* <DigitalClock /> */}
-              <Alltasks onAddTask={addMainTask} tasks={mainTasks} />
+              {/* <Alltasks onAddTask={addMainTask} tasks={mainTasks} /> */}
               {/* <MyTasks /> */}
-             <CreateTask  tasks={mainTasks} onAddTask={addMainTask}/>
+             <CreateTask  tasks={mainTasks} onAddTask={addMainTask} isNewTaskAdded={isNewTaskAdded}  setIsNewTaskAdded={setIsNewTaskAdded}/>
               {/* <HomepageTask quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask} setQuickTasks={setQuickTasks} /> */}
             
             

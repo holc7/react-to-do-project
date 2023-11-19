@@ -10,28 +10,36 @@ import sentMessage from "../assets/send-mess.png";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CreateTask({ onAddTask}) {
+export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdded}) {
     const [taskTitle, setTaskTitle] = useState("");
     const [category, setCategory] = useState("");
     const [urgency, setUrgency] = useState("");
+
   
   const [dueDate, setDueDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
 
 
 
+
   const handleDateChange = (date) => {
-    console.log("Selected Date:", date); // Add this line to debug
+    console.log("Selected Date:", date); 
 
     setDueDate(date);
     setIsCalendarVisible(false); 
   };
 
+  const handleUrgencyClick = (urgencyValue) => {
+    setUrgency(urgencyValue);
+  };
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (taskTitle.trim() === "" || !dueDate) {
         alert("Date and name are required!");
-        return; // Stop the function execution if validation fails
+        return; 
     }
     const newMainTask = {
         title: taskTitle,
@@ -45,7 +53,7 @@ export default function CreateTask({ onAddTask}) {
     setCategory(""); // Reset the category
     setUrgency(""); // Reset the urgency
     setDueDate(new Date()); // Reset the due date to current date
-    setIsCalendarVisible(false); // Hide the calendar
+    setIsCalendarVisible(false)
 };
   return (
             <div>
@@ -81,7 +89,7 @@ export default function CreateTask({ onAddTask}) {
                 </div>
 
                 <h5 className='category-text mt-3'>Categories</h5> 
-                <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar"}>
+                <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar" }>
                     <div className="category-body-container">
                         <div className='category-separator mt-1 d-flex justify-content-around'>
 
@@ -119,20 +127,20 @@ export default function CreateTask({ onAddTask}) {
                     <div className="category-body-container">
                         <div className='category-separator mt-2 d-flex justify-content-around'>
 
-                                <div className="icon-border-cat-high">
+                                <div onClick={() => handleUrgencyClick('High')} className="icon-border-cat-high">
                                     <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
                                     <div className="icon-text">HIGH</div>
                                 </div>
-                                <div className="icon-border-cat-medium">
+                                <div onClick={() => handleUrgencyClick('Medium')} className="icon-border-cat-medium">
                                     <FontAwesomeIcon  className="test-fa-cat-minus" icon={faMinus} size="2xl"/>
                                     <div className="icon-text-medium">MEDIUM</div>
                                 </div>
                 
-                                <div className="icon-border-cat-low">
+                                <div onClick={() => handleUrgencyClick('Low')} className="icon-border-cat-low">
                                     <FontAwesomeIcon  className="test-fa-cat-low" icon={faArrowCircleDown} size="2xl"/>
                                     <div className="icon-text-low">LOW</div>
                                 </div>
-                                <div className="icon-border-cat-add">
+                                <div onClick={() => handleUrgencyClick('Zero')} className="icon-border-cat-add">
                                     <FontAwesomeIcon  className="test-fa-cat-add" icon={faSmile} size="2xl"/>
                                     <div className="icon-text">ZERO</div>
                                 </div>
@@ -154,7 +162,12 @@ export default function CreateTask({ onAddTask}) {
                 </div>
 
                 <div className="second-all-tasks-container d-flex justify-content-around ">
-                    <div className={!isCalendarVisible ? "card-all-task-1 mt-5" : "IT IS SIMPLE"}>
+                    <div className={
+                        `${!isCalendarVisible ? "card-all-task-1 mt-5" : "IT IS SIMPLE"}
+                        ${!isCalendarVisible ? "card-all-task-1-new-task" : "" }
+                        ${isNewTaskAdded ? "card-all-task-1-new-task" : ""}`
+                    
+                    }>
 
                         <div className={!isCalendarVisible ? "icon-border-all-task-1 d-flex justify-content-between" : "WHAAAAAAAT"}>
                             <FontAwesomeIcon className="test-fa-tasks" icon={faSuitcase} size="2xl"/>

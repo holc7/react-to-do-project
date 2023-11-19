@@ -42,15 +42,14 @@ export default function Alltasks({ tasks }) {
       <h5>Today</h5>
       <ul>
       {Array.isArray(tasks) && tasks.map(task => (
-  <li key={task.id} className="task-time mt-2" onClick={() => setShowMenu(!showMenu)} >
-    <div className="span-container">
-      <p  className='task-title' contentEditable="true" >{task.title}</p>
-      <p className='task-date'>{task.dueDate}</p>
-      <p className='task-category'>{task.category}</p>
-      <p className="task-urgency">{task.urgency}</p>
-    </div>
-  </li>
-))}
+        <li key={task.id} className={`task-time mt-2 urgency-${task.urgency ? task.urgency.toLowerCase() : 'none'}`}>
+        <div className="span-container">
+            <p  className='task-title' >{task.title}</p>
+            <p className='task-date'>{task.dueDate}</p>
+            <p className='task-category'>{task.category}</p>
+          </div>
+        </li>
+          ))}
       </ul>
     </div>
   </div>
