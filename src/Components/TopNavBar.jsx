@@ -4,10 +4,10 @@ import { faUser,faAdd, faCalendarAlt, faCheck, faCog, faDeleteLeft, faEdit, faEy
 
 
 
-const TopNavBar = () => {
+const TopNavBar = ({toggleHomepage}) => {
     return ( 
         <div className="three-items-container mt-3 justify-content-around d-flex align-items-center mb-3">
-  <button type="button" className="btn-glass">
+  <button  onClick={toggleHomepage} type="button" className="btn-glass">
     <FontAwesomeIcon icon={faHomeAlt}/>
   </button>
   <h3 className="fw-normal me-3 ms-3 mt-2">
