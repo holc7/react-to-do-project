@@ -39,7 +39,9 @@ const MainContainer = () => {
 };
 
 
-  
+  const addMainTask = (newMainTask) => {
+    setMainTasks([...mainTasks, newMainTask])
+  }
 
 
         return ( 
@@ -50,9 +52,9 @@ const MainContainer = () => {
               <BottomNavBar  quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask}  currentTask={currentTask} setQuickTasks={setQuickTasks} />
               {/* <TasksSuggestions /> */}
               {/* <DigitalClock /> */}
-              {/* <Alltasks /> */}
+              <Alltasks onAddTask={addMainTask} tasks={mainTasks} />
               {/* <MyTasks /> */}
-             <CreateTask />
+             <CreateTask  tasks={mainTasks} onAddTask={addMainTask}/>
               {/* <HomepageTask quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask} setQuickTasks={setQuickTasks} /> */}
             
             

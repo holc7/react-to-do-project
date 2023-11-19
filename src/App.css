@@ -566,6 +566,13 @@ backdrop-filter: blur(10px);
 border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   padding: 20px;
+  word-wrap: break-word;
+  max-width: 310px ;
+  min-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
  
 }
 
@@ -573,6 +580,28 @@ border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); 
   transform: translateY(2px); 
 }
+
+.span-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-height: 30px;
+  margin-bottom: -10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.task-title {
+  margin-top: 25px;
+    font-weight: bold;
+    margin-bottom: 0 ; 
+}
+
+.task-date {
+
+     
+}
+
 
 .all-tasks-second-container {
 
@@ -595,10 +624,7 @@ overflow-y: auto;
   
 }
 
-.span-container {
-  display: flex;
-  gap: 20px;
-}
+
 
 .notch-button {
   background:#51C1E9;

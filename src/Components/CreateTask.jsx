@@ -10,36 +10,43 @@ import sentMessage from "../assets/send-mess.png";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CreateTask() {
-  const [task, setTask] = useState("");
+export default function CreateTask({ onAddTask}) {
+    const [taskTitle, setTaskTitle] = useState("");
+    const [category, setCategory] = useState("");
+    const [urgency, setUrgency] = useState("");
+  
   const [dueDate, setDueDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
 
-  const handleTaskChange = (e) => {
-    setTask(e.target.value);
-  };
+
 
   const handleDateChange = (date) => {
+    console.log("Selected Date:", date); // Add this line to debug
+
     setDueDate(date);
     setIsCalendarVisible(false); 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(task.trim() === "") {
-        alert("Please type something!") && setIsCalendarVisible(false)
-    
-    
-
-    return;
+    if (taskTitle.trim() === "" || !dueDate) {
+        alert("Date and name are required!");
+        return; // Stop the function execution if validation fails
     }
-    console.log('Task:', task, 'Due Date:', dueDate.toLocaleDateString());
-    
-    setTask("");
-    setDueDate(new Date());
-    setIsCalendarVisible(false);
-  };
+    const newMainTask = {
+        title: taskTitle,
+        category,
+        urgency,
+        dueDate: dueDate.toLocaleDateString()
+    };
 
+    onAddTask(newMainTask); // Call the onAddTask function with the new task object
+    setTaskTitle(""); // Reset the title
+    setCategory(""); // Reset the category
+    setUrgency(""); // Reset the urgency
+    setDueDate(new Date()); // Reset the due date to current date
+    setIsCalendarVisible(false); // Hide the calendar
+};
   return (
             <div>
               <div className='create-task-container d-flex flex-column'>
@@ -47,9 +54,9 @@ export default function CreateTask() {
                 <div className='glassmorphic-search-bar-cat'>
                     <form onSubmit={handleSubmit}>
                     <input 
-                        onChange={handleTaskChange} 
+                       onChange={(e) => setTaskTitle(e.target.value)}
                         onFocus={() => setIsCalendarVisible(true)} 
-                        value={task} 
+                        value={taskTitle}
                         type='text' 
                         placeholder='Add new task....'
                     />
@@ -64,6 +71,7 @@ export default function CreateTask() {
                         <Calendar 
                         onChange={handleDateChange} 
                         value={dueDate} 
+                    
                         />
                     )}
                     <button className='quick-add-button-add' type='submit'>
