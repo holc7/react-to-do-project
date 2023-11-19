@@ -3,17 +3,23 @@ import { faCog, faCalendar, faUser, faAdd, faCalendarAlt, faCheck, faDeleteLeft,
 import { useState } from 'react';
 import sentMessage from "../assets/send-mess.png";
 import taskAnimated from "../assets//icons8-todo-list.gif";
+import allTaskIcons from "../assets/icons8-to-do-32.png";
 
 
-const BottomNavBar = ( ) => {
+
+const BottomNavBar = ({toggleAllTasksVisibility, toggleVisibility, toggleComponentVisibility, quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask, }) => {
   const [taskMenu, setTaskmenu] = useState(false)
-
+ 
+const handleComponentSwitch = () => {
+  toggleComponentVisibility()
+}
 
 
   return (  
       <div className="bottom-nav">
-          <button type="button" className="btn-glass-3">
-            <FontAwesomeIcon icon={faCalendar}/>
+          <button onClick={toggleVisibility} type="button" className="btn-glass-3">
+          <img src={allTaskIcons} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
+
           </button>
           
           <div className="notch">
@@ -27,11 +33,11 @@ const BottomNavBar = ( ) => {
                     <h5>Add new task or a reminder </h5>
                     <p>Be productive today 😛</p>
                     <div className='glassmorphic-search-bar-cat-task-menu'>
-                      <form >
-                          <input type='text' placeholder='Add a quick task...'></input>
-                          <img src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
-                      </form>
-                    </div>
+                    <form onSubmit={(e) => { e.preventDefault(); handleQuickTask(currentTask); }}>
+                      <input onChange={(e) => setCurrentTask(e.target.value)} value={currentTask} type='text' placeholder='Add a quick task...'></input>
+                      <img onClick={(e) => { e.preventDefault(); handleQuickTask(currentTask); }} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
+                    </form>
+                        </div>
                   </div>  
                 </div>
               

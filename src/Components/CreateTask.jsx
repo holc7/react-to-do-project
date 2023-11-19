@@ -10,36 +10,50 @@ import sentMessage from "../assets/send-mess.png";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CreateTask() {
-  const [task, setTask] = useState("");
+export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdded}) {
+    const [taskTitle, setTaskTitle] = useState("");
+    const [category, setCategory] = useState("");
+    const [urgency, setUrgency] = useState("");
+
+  
   const [dueDate, setDueDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
 
-  const handleTaskChange = (e) => {
-    setTask(e.target.value);
-  };
+
 
   const handleDateChange = (date) => {
+    console.log("Selected Date:", date); 
+
     setDueDate(date);
     setIsCalendarVisible(false); 
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(task.trim() === "") {
-        alert("Please type something!") && setIsCalendarVisible(false)
-    
-    
-
-    return;
-    }
-    console.log('Task:', task, 'Due Date:', dueDate.toLocaleDateString());
-    
-    setTask("");
-    setDueDate(new Date());
-    setIsCalendarVisible(false);
+  const handleUrgencyClick = (urgencyValue) => {
+    setUrgency(urgencyValue);
   };
 
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (taskTitle.trim() === "" || !dueDate) {
+        alert("Date and name are required!");
+        return; 
+    }
+    const newMainTask = {
+        title: taskTitle,
+        category,
+        urgency,
+        dueDate: dueDate.toLocaleDateString()
+    };
+
+    onAddTask(newMainTask); 
+    setTaskTitle(""); 
+    setCategory(""); 
+    setUrgency(""); 
+    setDueDate(new Date()); 
+    setIsCalendarVisible(false)
+};
   return (
             <div>
               <div className='create-task-container d-flex flex-column'>
@@ -47,9 +61,9 @@ export default function CreateTask() {
                 <div className='glassmorphic-search-bar-cat'>
                     <form onSubmit={handleSubmit}>
                     <input 
-                        onChange={handleTaskChange} 
+                       onChange={(e) => setTaskTitle(e.target.value)}
                         onFocus={() => setIsCalendarVisible(true)} 
-                        value={task} 
+                        value={taskTitle}
                         type='text' 
                         placeholder='Add new task....'
                     />
@@ -64,6 +78,7 @@ export default function CreateTask() {
                         <Calendar 
                         onChange={handleDateChange} 
                         value={dueDate} 
+                    
                         />
                     )}
                     <button className='quick-add-button-add' type='submit'>
@@ -73,7 +88,7 @@ export default function CreateTask() {
                 </div>
 
                 <h5 className='category-text mt-3'>Categories</h5> 
-                <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar"}>
+                <div className={!isCalendarVisible ?  'category-container' : "category-container-active-calendar" }>
                     <div className="category-body-container">
                         <div className='category-separator mt-1 d-flex justify-content-around'>
 
@@ -111,20 +126,20 @@ export default function CreateTask() {
                     <div className="category-body-container">
                         <div className='category-separator mt-2 d-flex justify-content-around'>
 
-                                <div className="icon-border-cat-high">
+                                <div onClick={() => handleUrgencyClick('High')} className="icon-border-cat-high">
                                     <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
                                     <div className="icon-text">HIGH</div>
                                 </div>
-                                <div className="icon-border-cat-medium">
+                                <div onClick={() => handleUrgencyClick('Medium')} className="icon-border-cat-medium">
                                     <FontAwesomeIcon  className="test-fa-cat-minus" icon={faMinus} size="2xl"/>
                                     <div className="icon-text-medium">MEDIUM</div>
                                 </div>
                 
-                                <div className="icon-border-cat-low">
+                                <div onClick={() => handleUrgencyClick('Low')} className="icon-border-cat-low">
                                     <FontAwesomeIcon  className="test-fa-cat-low" icon={faArrowCircleDown} size="2xl"/>
                                     <div className="icon-text-low">LOW</div>
                                 </div>
-                                <div className="icon-border-cat-add">
+                                <div onClick={() => handleUrgencyClick('Zero')} className="icon-border-cat-add">
                                     <FontAwesomeIcon  className="test-fa-cat-add" icon={faSmile} size="2xl"/>
                                     <div className="icon-text">ZERO</div>
                                 </div>
@@ -146,7 +161,13 @@ export default function CreateTask() {
                 </div>
 
                 <div className="second-all-tasks-container d-flex justify-content-around ">
-                    <div className={!isCalendarVisible ? "card-all-task-1 mt-5" : "IT IS SIMPLE"}>
+                    <div className={
+                        `${!isCalendarVisible ? "card-all-task-1 mt-5" : "full-hidden"}
+                      
+                        ${isNewTaskAdded ? "card-all-task-1-new-task" : ""}`
+                  
+                    
+                    }>
 
                         <div className={!isCalendarVisible ? "icon-border-all-task-1 d-flex justify-content-between" : "WHAAAAAAAT"}>
                             <FontAwesomeIcon className="test-fa-tasks" icon={faSuitcase} size="2xl"/>
