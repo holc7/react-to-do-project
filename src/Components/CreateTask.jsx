@@ -47,11 +47,11 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
         dueDate: dueDate.toLocaleDateString()
     };
 
-    onAddTask(newMainTask); // Call the onAddTask function with the new task object
-    setTaskTitle(""); // Reset the title
-    setCategory(""); // Reset the category
-    setUrgency(""); // Reset the urgency
-    setDueDate(new Date()); // Reset the due date to current date
+    onAddTask(newMainTask); 
+    setTaskTitle(""); 
+    setCategory(""); 
+    setUrgency(""); 
+    setDueDate(new Date()); 
     setIsCalendarVisible(false)
 };
   return (
