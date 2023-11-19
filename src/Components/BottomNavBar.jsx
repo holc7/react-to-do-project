@@ -7,15 +7,17 @@ import allTaskIcons from "../assets/icons8-to-do-32.png";
 
 
 
-const BottomNavBar = ({ quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask}) => {
+const BottomNavBar = ({toggleAllTasksVisibility, toggleVisibility, toggleComponentVisibility, quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask, }) => {
   const [taskMenu, setTaskmenu] = useState(false)
-  
-
+ 
+const handleComponentSwitch = () => {
+  toggleComponentVisibility()
+}
 
 
   return (  
       <div className="bottom-nav">
-          <button type="button" className="btn-glass-3">
+          <button onClick={toggleVisibility} type="button" className="btn-glass-3">
           <img src={allTaskIcons} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
 
           </button>

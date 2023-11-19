@@ -20,6 +20,9 @@ const MainContainer = () => {
   const [currentTask, setCurrentTask] = useState("");
   const [mainTasks, setMainTasks] = useState([]);
   const [isNewTaskAdded, setIsNewTaskAdded] = useState(false);
+  const [isComponentVisible, setIsComponentVisible] = useState(false);
+  const [showAllTasks, setShowAllTasks] = useState(false);
+
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -53,19 +56,57 @@ const MainContainer = () => {
     setMainTasks(mainTasks.filter((_, i) => i !== index))
   };
 
+  const toggleAllTasksVisibility = () => {
+    setShowAllTasks(!showAllTasks);
+};
+
+    const toggleComponentVisibility = () => {
+      setIsComponentVisible(!isComponentVisible)
+    }
 
         return ( 
             <div className="container my-5">
             <div className="row justify-content-center">
               <div className="second-container col-12 col-md-12 col-lg-12">
               <TopNavBar />
-              <BottomNavBar  quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask}  currentTask={currentTask} setQuickTasks={setQuickTasks} />
+              <BottomNavBar 
+              toggleVisibility={toggleAllTasksVisibility}
+              toggleComponentVisibility={toggleComponentVisibility} 
+              isVisible={isComponentVisible}  
+              quickTasks={quickTasks} 
+              handleQuickTask={handleQuickTask} 
+              handleFormSubmit={handleFormSubmit} 
+              setCurrentTask={setCurrentTask}  
+              currentTask={currentTask} 
+              setQuickTasks={setQuickTasks} />
+              {showAllTasks ? (
+                <Alltasks 
+                onAddTask={addMainTask} 
+                tasks={mainTasks}  
+                handleMainTaskDelete={handleMainTaskDelete}/> 
+              ) : (
+                <>
+                <DigitalClock />
+              <HomepageTask 
+              quickTasks={quickTasks} 
+              handleQuickTask={handleQuickTask} 
+              handleFormSubmit={handleFormSubmit} 
+              setCurrentTask={setCurrentTask} 
+              setQuickTasks={setQuickTasks} 
+              handleTaskDelete={handleTaskDelete} />
+                
+                </>
+              )}
               {/* <TasksSuggestions /> */}
-              {/* <DigitalClock /> */}
-              {/* <Alltasks onAddTask={addMainTask} tasks={mainTasks}  handleMainTaskDelete={handleMainTaskDelete}/> */}
+
+           
               {/* <MyTasks /> */}
-             <CreateTask  tasks={mainTasks} onAddTask={addMainTask} isNewTaskAdded={isNewTaskAdded}  setIsNewTaskAdded={setIsNewTaskAdded}/>
-              {/* <HomepageTask quickTasks={quickTasks} handleQuickTask={handleQuickTask} handleFormSubmit={handleFormSubmit} setCurrentTask={setCurrentTask} setQuickTasks={setQuickTasks} handleTaskDelete={handleTaskDelete} /> */}
+             {/* <CreateTask  
+             tasks={mainTasks} 
+             onAddTask={addMainTask} 
+             isNewTaskAdded={isNewTaskAdded} 
+             setIsNewTaskAdded={setIsNewTaskAdded}/> */}
+           
             
             
               </div>
