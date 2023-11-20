@@ -4,6 +4,7 @@ import { useState } from 'react';
 import sentMessage from "../assets/send-mess.png";
 import taskAnimated from "../assets//icons8-todo-list.gif";
 import allTaskIcons from "../assets/icons8-to-do-32.png";
+import allTasksAdd from "../assets/icons8-add-task-64.png"
 
 
 
@@ -45,7 +46,7 @@ const handleComponentSwitch = () => {
               
           </div>
           <button onClick={toggleCreateTask} type="button" className="btn-glass-3">
-            <FontAwesomeIcon icon={faCogs}/>
+          <img src={allTasksAdd} alt='sent-message' style={{ width: "30px"}}/>
           </button>
       </div>
   );

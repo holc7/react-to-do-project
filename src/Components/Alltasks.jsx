@@ -4,7 +4,7 @@ import {faEdit, faClock, faSort, faCheckCircle, faTrash } from '@fortawesome/fre
 import sentMessage from "../assets/send-mess.png";
 
 
-export default function Alltasks({deleteAllMainTasks , sortTasksByDate, handleMainTaskDelete ,tasks }) {
+export default function Alltasks({ deleteCompletedTasks, saveEditedTitle, editingTask, setEditingTask, toggleCompletion, deleteAllMainTasks , sortTasksByDate, handleMainTaskDelete ,tasks }) {
   const [showMenu, setShowMenu] = useState(false);
   const  [taskDropdown, setTaskDropdown] = useState(false)
   
@@ -30,7 +30,7 @@ export default function Alltasks({deleteAllMainTasks , sortTasksByDate, handleMa
               </div>
               <div className="menu-item">
                 <FontAwesomeIcon icon={faCheckCircle} />
-                <span className='dropdown-text'>Clear completed</span>
+                <span  onClick={deleteCompletedTasks} className='dropdown-text'>Clear completed</span>
               </div>
               <div  className="menu-item">
                 <FontAwesomeIcon icon={faTrash} />
@@ -45,20 +45,37 @@ export default function Alltasks({deleteAllMainTasks , sortTasksByDate, handleMa
     <div>
       <h5>Today</h5>
       <ul>
-      {Array.isArray(tasks) && tasks.map((task, index) => (
-  <li key={task.id} className={`task-time mt-2 urgency-${task.urgency ? task.urgency.toLowerCase() : 'none'}`}>
-    <div className="span-container">
-      <p className='task-title'>{task.title}</p>
-      <p className='task-date'>{task.dueDate}</p>
-      <p className='task-category'>{task.category}</p>
-    </div>
-    <div className='edit-delete-icon'>
-      <FontAwesomeIcon icon={faEdit} className="edit-icon" />
-      <FontAwesomeIcon onClick={() => handleMainTaskDelete(index)} icon={faTrash} className="trash-icon" />
-    </div>
-  </li>
-))}
-      </ul>
+  {Array.isArray(tasks) && tasks.map((task, index) => (
+    <li onClick={() => toggleCompletion(task.id)} key={task.id} className={`task-time mt-2 urgency-${task.urgency ? task.urgency.toLowerCase() : 'none'} ${task.completed ? "main-task-completed" : ""}`}>
+      <div className="span-container">
+        {editingTask === task.id ? (
+          <input 
+            
+            defaultValue={task.title} 
+            onClick={(event) => event.stopPropagation()}
+            onBlur={() => setEditingTask(null)} 
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                saveEditedTitle(task.id, event.target.value);
+                setEditingTask(null);
+                
+              }
+            }} 
+          />
+        ) : (
+          <p className="task-title">{task.title}</p>
+        )}
+        <p className='task-date'>{task.dueDate}</p>
+        <p className='task-category'>{task.category}</p>
+      </div>
+      <div className='edit-delete-icon'>
+        <FontAwesomeIcon icon={faEdit} className="edit-icon" onClick={(event) => { event.stopPropagation(); setEditingTask(task.id); }} />
+        <FontAwesomeIcon onClick={(event) => { event.stopPropagation(); handleMainTaskDelete(index); }} icon={faTrash} className="trash-icon" />
+      </div>
+    </li>
+  ))}
+</ul>
     </div>
   </div>
 </div>

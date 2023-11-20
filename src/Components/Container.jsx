@@ -15,6 +15,7 @@ const MainContainer = () => {
   const [showAllTasks, setShowAllTasks] = useState(false);
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [showHomepage, setShowHomepage] = useState(false)
+  
   const [sortByDate, setSortByDate] = useState(true)
   const [tasks, setTasks] = useState([]);
   const savedMainTasks = localStorage.getItem('mainTasks');
@@ -24,6 +25,8 @@ const [mainTasks, setMainTasks] = useState(initialMainTasks);
 const savedQuickTasks = localStorage.getItem("quickTasks");
 const initialQuickTasks = savedQuickTasks ? JSON.parse(savedQuickTasks) : [];
 const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
+const [editingTask, setEditingTask] = useState(null);
+
 
 
 
@@ -45,6 +48,12 @@ const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
     setMainTasks([])
     localStorage.setItem('mainTasks', JSON.stringify([]));
   }
+  const deleteCompletedTasks = () => {
+    const updatedMainTasks = mainTasks.filter(task => !task.completed);
+    setMainTasks(updatedMainTasks);
+    localStorage.setItem('mainTasks', JSON.stringify(updatedMainTasks));
+  };
+ 
 
   const handleQuickTask = (newTask) => {
     if (newTask.trim() === "") {
@@ -88,6 +97,19 @@ const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
     handleQuickTask(currentTask);
     setCurrentTask("");
   };
+
+  const toggleCompletion = (id) => {
+    console.log("Toggle completion for", id);
+  
+    setMainTasks(mainTasks.map(task => 
+      task.id === id ? {...task, completed: !task.completed} : task
+    ));
+  }
+  
+  const saveEditedTitle = (id, newTitle) => {
+    setMainTasks(mainTasks.map(task => task.id === id ? {...task, title: newTitle} : task));
+  };
+
   useEffect(() => {
     localStorage.setItem('mainTasks', JSON.stringify(mainTasks));
   }, [mainTasks]);
@@ -113,11 +135,16 @@ const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
           />
           {showAllTasks && (
             <Alltasks
+            deleteCompletedTasks={deleteCompletedTasks}
+            editingTask={editingTask} 
+            setEditingTask={setEditingTask}
             deleteAllMainTasks={deleteAllMainTasks}
               onAddTask={addMainTask}
               tasks={mainTasks}
               handleMainTaskDelete={handleMainTaskDelete}
               sortTasksByDate={sortTasksByDate}
+              toggleCompletion = {toggleCompletion}
+              saveEditedTitle = {saveEditedTitle}
             />
           )}
           {showCreateTask && (

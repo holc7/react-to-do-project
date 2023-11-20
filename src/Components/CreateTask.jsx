@@ -14,6 +14,8 @@ export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, s
     const [taskTitle, setTaskTitle] = useState("");
     const [category, setCategory] = useState("");
     const [urgency, setUrgency] = useState("");
+    const [isTaskCreated, setIsTaskCreated] = useState(false);
+
 
   
   const [dueDate, setDueDate] = useState(new Date());
@@ -30,6 +32,7 @@ export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, s
 
   const handleUrgencyClick = (urgencyValue) => {
     setUrgency(urgencyValue);
+    setIsTaskCreated(true);
   };
 
 
@@ -126,8 +129,10 @@ export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, s
                     <div className="category-body-container">
                         <div className='category-separator mt-2 d-flex justify-content-around'>
 
-                                <div onClick={() => handleUrgencyClick('High')} className="icon-border-cat-high">
-                                    <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
+                        <div
+        onClick={() => handleUrgencyClick('High')}
+        className={`icon-border-cat-high ${isTaskCreated ? 'icon-border-cat-high-active' : ''}`}
+      >                                    <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
                                     <div className="icon-text">HIGH</div>
                                 </div>
                                 <div onClick={() => handleUrgencyClick('Medium')} className="icon-border-cat-medium">
@@ -183,7 +188,7 @@ export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, s
                             <FontAwesomeIcon className="test-fa" icon={faSuitcase} size="2xl"/>
                             
                             </div>   
-                        <h4 className="card-title-all-task-2">Work</h4>
+                        <h4 className="card-title-all-task-2">Lists</h4>
                         </div>
                        
                     </div>
