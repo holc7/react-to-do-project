@@ -103,7 +103,7 @@ const [editingTask, setEditingTask] = useState(null);
 
   const handleFormSubmit2 = (e) => {
     e.preventDefault();
-    handleQuickTask(currentTask);
+    handleQuickTask(currentTask2);
     setCurrentTask2("");
   };
 

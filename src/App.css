@@ -1123,6 +1123,9 @@ cursor: pointer;
   min-width: 364px;
 }
 
+.img {
+  cursor: pointer !important;
+}
 
 .task-menu-container {
   border-radius: 20px !important;

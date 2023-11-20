@@ -37,8 +37,16 @@ const handleComponentSwitch = () => {
                     <div className='glassmorphic-search-bar-cat-task-menu'>
                     <form onSubmit={handleFormSubmit2}>
                   <input onChange={(e) => setCurrentTask2(e.target.value)} value={currentTask2} type='text' placeholder='Add a quick task...'></input>
-                  <img onClick={(e) => { e.preventDefault(); handleQuickTask(currentTask2); }} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
-                </form>
+                  <img 
+  onClick={(e) => { 
+    e.preventDefault(); 
+    handleQuickTask(currentTask2); 
+    setCurrentTask2("");  // Reset the input field after adding the task
+  }} 
+  src={sentMessage} 
+  alt='sent-message' 
+  style={{ width: "30px", marginRight: "15px", cursor: "pointer"}}
+/>                </form>
                         </div>
                   </div>  
                 </div>
