@@ -1,122 +1,179 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdd, faCalendarAlt, faCheck, faDeleteLeft, faEdit, faEyeDropper, faHome, faHomeAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import App from '../App';
+import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TopNavBar from './TopNavBar';
 import BottomNavBar from './BottomNavBar';
 import DigitalClock from './DigitalClock';
-import MyTasks from './MyLists';
-import TasksSuggestions from './TasksSuggestions';
 import HomepageTask from './HomepageTask';
 import Alltasks from './Alltasks';
 import CreateTask from './CreateTask';
-import { useState } from 'react';
+
 
 const MainContainer = () => {
-
-  const [quickTasks, setQuickTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
-  const [mainTasks, setMainTasks] = useState([]);
+
   const [isNewTaskAdded, setIsNewTaskAdded] = useState(false);
-  const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [showAllTasks, setShowAllTasks] = useState(false);
-
+  const [showCreateTask, setShowCreateTask] = useState(false);
+  const [showHomepage, setShowHomepage] = useState(false)
   
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    handleQuickTask(currentTask);
-    setCurrentTask("");
+  const [sortByDate, setSortByDate] = useState(true)
+  const [tasks, setTasks] = useState([]);
+  const savedMainTasks = localStorage.getItem('mainTasks');
+const initialMainTasks = savedMainTasks ? JSON.parse(savedMainTasks) : [];
+const [mainTasks, setMainTasks] = useState(initialMainTasks);
+
+const savedQuickTasks = localStorage.getItem("quickTasks");
+const initialQuickTasks = savedQuickTasks ? JSON.parse(savedQuickTasks) : [];
+const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
+const [editingTask, setEditingTask] = useState(null);
+
+
+
+
+
+  const sortTasksByDate = () => {  
+    console.log('sortTasksByDate called');
+    let sortedTasks;
+    if (sortByDate) {
+       sortedTasks = [...mainTasks].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+    } else {
+      sortedTasks = [...mainTasks].sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
+    }
+    
+    setMainTasks(sortedTasks)
+    setSortByDate(!sortByDate)
   }
-
-
-
+  
+  const deleteAllMainTasks = () => {
+    setMainTasks([])
+    localStorage.setItem('mainTasks', JSON.stringify([]));
+  }
+  const deleteCompletedTasks = () => {
+    const updatedMainTasks = mainTasks.filter(task => !task.completed);
+    setMainTasks(updatedMainTasks);
+    localStorage.setItem('mainTasks', JSON.stringify(updatedMainTasks));
+  };
+ 
 
   const handleQuickTask = (newTask) => {
-  if (newTask.trim() === "") {
-    alert("Please type something!!!");
-  } else {
-    setQuickTasks([...quickTasks, newTask]);
-    
-  }
-};
-
-
+    if (newTask.trim() === "") {
+      alert("Please type something!!!");
+    } else {
+      setQuickTasks([...quickTasks, newTask]);
+    }
+  };
   const addMainTask = (newMainTask) => {
-    setMainTasks([...mainTasks, newMainTask])
+    newMainTask.id = uuidv4();
+    setMainTasks([...mainTasks, newMainTask]);
     setIsNewTaskAdded(true);
-
-  }
+  };
   const handleTaskDelete = (index) => {
-    setQuickTasks(quickTasks.filter((_, i) => i !== index))
+    setQuickTasks(quickTasks.filter((_, i) => i !== index));
+    setMainTasks(mainTasks.filter(task => task.id !== taskId))
   };
 
   const handleMainTaskDelete = (index) => {
-    setMainTasks(mainTasks.filter((_, i) => i !== index))
+    setMainTasks(mainTasks.filter((_, i) => i !== index));
   };
 
   const toggleAllTasksVisibility = () => {
     setShowAllTasks(!showAllTasks);
+    setShowCreateTask(false);
+  };
+
+  const toggleCreateTaskVisibility = () => {
+    setShowCreateTask(!showCreateTask);
+    setShowAllTasks(false);
+  };
+
+  const toggleHomePageVisibility = () => {
+    setShowHomepage(!showHomepage);
+    setShowAllTasks(false);
+    setShowCreateTask(false);
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleQuickTask(currentTask);
+    setCurrentTask("");
+  };
+
+  const toggleCompletion = (id) => {
+    console.log("Toggle completion for", id);
+  
+    setMainTasks(mainTasks.map(task => 
+      task.id === id ? {...task, completed: !task.completed} : task
+    ));
+  }
+  
+  const saveEditedTitle = (id, newTitle) => {
+    setMainTasks(mainTasks.map(task => task.id === id ? {...task, title: newTitle} : task));
+  };
+
+  useEffect(() => {
+    localStorage.setItem('mainTasks', JSON.stringify(mainTasks));
+  }, [mainTasks]);
+
+  useEffect(() => {
+    localStorage.setItem("quickTasks", JSON.stringify(quickTasks))
+  })
+
+  return (
+    <div className="container my-5">
+      <div className="row justify-content-center">
+        <div className="second-container col-12 col-md-12 col-lg-12">
+          <TopNavBar toggleHomepage = {toggleHomePageVisibility} />
+          <BottomNavBar
+            toggleAllTasks={toggleAllTasksVisibility}
+            toggleCreateTask={toggleCreateTaskVisibility}
+            quickTasks={quickTasks}
+            handleQuickTask={handleQuickTask}
+            handleFormSubmit={handleFormSubmit}
+            setCurrentTask={setCurrentTask}
+            currentTask={currentTask}
+            setQuickTasks={setQuickTasks}
+          />
+          {showAllTasks && (
+            <Alltasks
+            deleteCompletedTasks={deleteCompletedTasks}
+            editingTask={editingTask} 
+            setEditingTask={setEditingTask}
+            deleteAllMainTasks={deleteAllMainTasks}
+              onAddTask={addMainTask}
+              tasks={mainTasks}
+              handleMainTaskDelete={handleMainTaskDelete}
+              sortTasksByDate={sortTasksByDate}
+              toggleCompletion = {toggleCompletion}
+              saveEditedTitle = {saveEditedTitle}
+            />
+          )}
+          {showCreateTask && (
+            <CreateTask
+              toggleAllTasks={toggleAllTasksVisibility}
+              tasks={mainTasks}
+              onAddTask={addMainTask}
+              isNewTaskAdded={isNewTaskAdded}
+              setIsNewTaskAdded={setIsNewTaskAdded}
+            />
+          )}
+          {!showAllTasks && !showCreateTask &&  (
+            <>
+              <DigitalClock />
+              <HomepageTask
+               
+                quickTasks={quickTasks}
+                handleQuickTask={handleQuickTask}
+                handleFormSubmit={handleFormSubmit}
+                setCurrentTask={setCurrentTask}
+                setQuickTasks={setQuickTasks}
+                handleTaskDelete={handleTaskDelete}
+              />
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
-    const toggleComponentVisibility = () => {
-      setIsComponentVisible(!isComponentVisible)
-    }
-
-        return ( 
-            <div className="container my-5">
-            <div className="row justify-content-center">
-              <div className="second-container col-12 col-md-12 col-lg-12">
-              <TopNavBar />
-              <BottomNavBar 
-              toggleVisibility={toggleAllTasksVisibility}
-              toggleComponentVisibility={toggleComponentVisibility} 
-              isVisible={isComponentVisible}  
-              quickTasks={quickTasks} 
-              handleQuickTask={handleQuickTask} 
-              handleFormSubmit={handleFormSubmit} 
-              setCurrentTask={setCurrentTask}  
-              currentTask={currentTask} 
-              setQuickTasks={setQuickTasks} />
-              {showAllTasks ? (
-                <Alltasks 
-                onAddTask={addMainTask} 
-                tasks={mainTasks}  
-                handleMainTaskDelete={handleMainTaskDelete}/> 
-              ) : (
-                <>
-                <DigitalClock />
-              <HomepageTask 
-              quickTasks={quickTasks} 
-              handleQuickTask={handleQuickTask} 
-              handleFormSubmit={handleFormSubmit} 
-              setCurrentTask={setCurrentTask} 
-              setQuickTasks={setQuickTasks} 
-              handleTaskDelete={handleTaskDelete} />
-                
-                </>
-              )}
-              {/* <TasksSuggestions /> */}
-
-           
-              {/* <MyTasks /> */}
-             {/* <CreateTask  
-             tasks={mainTasks} 
-             onAddTask={addMainTask} 
-             isNewTaskAdded={isNewTaskAdded} 
-             setIsNewTaskAdded={setIsNewTaskAdded}/> */}
-           
-            
-            
-              </div>
-            </div>
-          </div>
-
-
-        )
-           
-    
-}
- 
 export default MainContainer;

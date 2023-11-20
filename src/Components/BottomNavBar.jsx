@@ -4,10 +4,11 @@ import { useState } from 'react';
 import sentMessage from "../assets/send-mess.png";
 import taskAnimated from "../assets//icons8-todo-list.gif";
 import allTaskIcons from "../assets/icons8-to-do-32.png";
+import allTasksAdd from "../assets/icons8-add-task-64.png"
 
 
 
-const BottomNavBar = ({toggleAllTasksVisibility, toggleVisibility, toggleComponentVisibility, quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask, }) => {
+const BottomNavBar = ({ toggleAllTasks, toggleCreateTask, toggleVisibility, toggleComponentVisibility, quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask, }) => {
   const [taskMenu, setTaskmenu] = useState(false)
  
 const handleComponentSwitch = () => {
@@ -17,7 +18,7 @@ const handleComponentSwitch = () => {
 
   return (  
       <div className="bottom-nav">
-          <button onClick={toggleVisibility} type="button" className="btn-glass-3">
+          <button onClick={toggleAllTasks} type="button" className="btn-glass-3">
           <img src={allTaskIcons} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
 
           </button>
@@ -44,8 +45,8 @@ const handleComponentSwitch = () => {
               )}
               
           </div>
-          <button type="button" className="btn-glass-3">
-            <FontAwesomeIcon icon={faCogs}/>
+          <button onClick={toggleCreateTask} type="button" className="btn-glass-3">
+          <img src={allTasksAdd} alt='sent-message' style={{ width: "30px"}}/>
           </button>
       </div>
   );

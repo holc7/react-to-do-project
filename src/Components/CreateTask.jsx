@@ -10,10 +10,12 @@ import sentMessage from "../assets/send-mess.png";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdded}) {
+export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, setIsNewTaskAdded}) {
     const [taskTitle, setTaskTitle] = useState("");
     const [category, setCategory] = useState("");
     const [urgency, setUrgency] = useState("");
+    const [isTaskCreated, setIsTaskCreated] = useState(false);
+
 
   
   const [dueDate, setDueDate] = useState(new Date());
@@ -30,6 +32,7 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
 
   const handleUrgencyClick = (urgencyValue) => {
     setUrgency(urgencyValue);
+    setIsTaskCreated(true);
   };
 
 
@@ -126,8 +129,10 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
                     <div className="category-body-container">
                         <div className='category-separator mt-2 d-flex justify-content-around'>
 
-                                <div onClick={() => handleUrgencyClick('High')} className="icon-border-cat-high">
-                                    <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
+                        <div
+        onClick={() => handleUrgencyClick('High')}
+        className={`icon-border-cat-high ${isTaskCreated ? 'icon-border-cat-high-active' : ''}`}
+      >                                    <FontAwesomeIcon  className="test-fa-cat-high" icon={faExclamationTriangle} size="2xl"/>
                                     <div className="icon-text">HIGH</div>
                                 </div>
                                 <div onClick={() => handleUrgencyClick('Medium')} className="icon-border-cat-medium">
@@ -160,7 +165,7 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
 
                 </div>
 
-                <div className="second-all-tasks-container d-flex justify-content-around ">
+                <div  onClick={toggleAllTasks} className="second-all-tasks-container d-flex justify-content-around ">
                     <div className={
                         `${!isCalendarVisible ? "card-all-task-1 mt-5" : "full-hidden"}
                       
