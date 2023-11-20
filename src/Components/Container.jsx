@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
-// Import necessary components
+import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TopNavBar from './TopNavBar';
 import BottomNavBar from './BottomNavBar';
 import DigitalClock from './DigitalClock';
 import HomepageTask from './HomepageTask';
 import Alltasks from './Alltasks';
 import CreateTask from './CreateTask';
-// Import other necessary components and icons
+
 
 const MainContainer = () => {
   const [quickTasks, setQuickTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
-  const [mainTasks, setMainTasks] = useState([]);
+
   const [isNewTaskAdded, setIsNewTaskAdded] = useState(false);
   const [showAllTasks, setShowAllTasks] = useState(false);
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [showHomepage, setShowHomepage] = useState(false)
   const [sortByDate, setSortByDate] = useState(true)
+  const [tasks, setTasks] = useState([]);
+  const savedMainTasks = localStorage.getItem('mainTasks');
+const initialMainTasks = savedMainTasks ? JSON.parse(savedMainTasks) : [];
+const [mainTasks, setMainTasks] = useState(initialMainTasks);
+
+
 
   const sortTasksByDate = () => {  
     console.log('sortTasksByDate called');
@@ -38,14 +44,14 @@ const MainContainer = () => {
       setQuickTasks([...quickTasks, newTask]);
     }
   };
-
   const addMainTask = (newMainTask) => {
+    newMainTask.id = uuidv4();
     setMainTasks([...mainTasks, newMainTask]);
     setIsNewTaskAdded(true);
   };
-
-  const handleTaskDelete = (index) => {
+  const handleTaskDelete = (taskId) => {
     setQuickTasks(quickTasks.filter((_, i) => i !== index));
+    setMainTasks(mainTasks.filter(task => task.id !== taskId))
   };
 
   const handleMainTaskDelete = (index) => {
@@ -73,6 +79,9 @@ const MainContainer = () => {
     handleQuickTask(currentTask);
     setCurrentTask("");
   };
+  useEffect(() => {
+    localStorage.setItem('mainTasks', JSON.stringify(mainTasks));
+  }, [mainTasks]);
 
   return (
     <div className="container my-5">
