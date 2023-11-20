@@ -10,6 +10,8 @@ import CreateTask from './CreateTask';
 
 const MainContainer = () => {
   const [currentTask, setCurrentTask] = useState("");
+  const [currentTask2, setCurrentTask2] = useState("");
+
 
   const [isNewTaskAdded, setIsNewTaskAdded] = useState(false);
   const [showAllTasks, setShowAllTasks] = useState(false);
@@ -96,6 +98,13 @@ const [editingTask, setEditingTask] = useState(null);
     e.preventDefault();
     handleQuickTask(currentTask);
     setCurrentTask("");
+    setCurrentTask2("");
+  };
+
+  const handleFormSubmit2 = (e) => {
+    e.preventDefault();
+    handleQuickTask(currentTask);
+    setCurrentTask2("");
   };
 
   const toggleCompletion = (id) => {
@@ -129,9 +138,10 @@ const [editingTask, setEditingTask] = useState(null);
             quickTasks={quickTasks}
             handleQuickTask={handleQuickTask}
             handleFormSubmit={handleFormSubmit}
-            setCurrentTask={setCurrentTask}
-            currentTask={currentTask}
+            setCurrentTask2={setCurrentTask2}
+            currentTask2={currentTask2}
             setQuickTasks={setQuickTasks}
+            handleFormSubmit2={handleFormSubmit2}
           />
           {showAllTasks && (
             <Alltasks
@@ -160,7 +170,7 @@ const [editingTask, setEditingTask] = useState(null);
             <>
               <DigitalClock />
               <HomepageTask
-               
+               currentTask={currentTask}
                 quickTasks={quickTasks}
                 handleQuickTask={handleQuickTask}
                 handleFormSubmit={handleFormSubmit}

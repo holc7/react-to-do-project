@@ -10,7 +10,7 @@ const TaskAnimation = () => {
   return <Lottie animationData={taskAnimation} />
 }
 
-export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSubmit, setQuickTasks, handleTaskDelete }) {
+export default function HomepageTask({ currentTask, quickTasks, setCurrentTask, handleFormSubmit, setQuickTasks, handleTaskDelete }) {
   
 
 
@@ -25,6 +25,7 @@ export default function HomepageTask({ quickTasks, setCurrentTask, handleFormSub
             name="quickTask" 
             onChange={(e) => setCurrentTask(e.target.value)}
             type='text' 
+            value={currentTask} 
             placeholder='Add a quick task...'
           />
           <img onClick={handleFormSubmit} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
