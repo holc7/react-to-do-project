@@ -9,7 +9,6 @@ import CreateTask from './CreateTask';
 
 
 const MainContainer = () => {
-  const [quickTasks, setQuickTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
 
   const [isNewTaskAdded, setIsNewTaskAdded] = useState(false);
@@ -21,6 +20,11 @@ const MainContainer = () => {
   const savedMainTasks = localStorage.getItem('mainTasks');
 const initialMainTasks = savedMainTasks ? JSON.parse(savedMainTasks) : [];
 const [mainTasks, setMainTasks] = useState(initialMainTasks);
+
+const savedQuickTasks = localStorage.getItem("quickTasks");
+const initialQuickTasks = savedQuickTasks ? JSON.parse(savedQuickTasks) : [];
+const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
+
 
 
 
@@ -49,7 +53,7 @@ const [mainTasks, setMainTasks] = useState(initialMainTasks);
     setMainTasks([...mainTasks, newMainTask]);
     setIsNewTaskAdded(true);
   };
-  const handleTaskDelete = (taskId) => {
+  const handleTaskDelete = (index) => {
     setQuickTasks(quickTasks.filter((_, i) => i !== index));
     setMainTasks(mainTasks.filter(task => task.id !== taskId))
   };
@@ -82,6 +86,10 @@ const [mainTasks, setMainTasks] = useState(initialMainTasks);
   useEffect(() => {
     localStorage.setItem('mainTasks', JSON.stringify(mainTasks));
   }, [mainTasks]);
+
+  useEffect(() => {
+    localStorage.setItem("quickTasks", JSON.stringify(quickTasks))
+  })
 
   return (
     <div className="container my-5">
