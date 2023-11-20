@@ -10,7 +10,7 @@ import sentMessage from "../assets/send-mess.png";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdded}) {
+export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, setIsNewTaskAdded}) {
     const [taskTitle, setTaskTitle] = useState("");
     const [category, setCategory] = useState("");
     const [urgency, setUrgency] = useState("");
@@ -160,7 +160,7 @@ export default function CreateTask({ onAddTask, isNewTaskAdded, setIsNewTaskAdde
 
                 </div>
 
-                <div className="second-all-tasks-container d-flex justify-content-around ">
+                <div  onClick={toggleAllTasks} className="second-all-tasks-container d-flex justify-content-around ">
                     <div className={
                         `${!isCalendarVisible ? "card-all-task-1 mt-5" : "full-hidden"}
                       

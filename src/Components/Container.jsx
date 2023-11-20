@@ -16,6 +16,20 @@ const MainContainer = () => {
   const [showAllTasks, setShowAllTasks] = useState(false);
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [showHomepage, setShowHomepage] = useState(false)
+  const [sortByDate, setSortByDate] = useState(true)
+
+  const sortTasksByDate = () => {  
+    console.log('sortTasksByDate called');
+    let sortedTasks;
+    if (sortByDate) {
+       sortedTasks = [...mainTasks].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+    } else {
+      sortedTasks = [...mainTasks].sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
+    }
+    
+    setMainTasks(sortedTasks)
+    setSortByDate(!sortByDate)
+  }
 
   const handleQuickTask = (newTask) => {
     if (newTask.trim() === "") {
@@ -80,10 +94,12 @@ const MainContainer = () => {
               onAddTask={addMainTask}
               tasks={mainTasks}
               handleMainTaskDelete={handleMainTaskDelete}
+              sortTasksByDate={sortTasksByDate}
             />
           )}
           {showCreateTask && (
             <CreateTask
+              toggleAllTasks={toggleAllTasksVisibility}
               tasks={mainTasks}
               onAddTask={addMainTask}
               isNewTaskAdded={isNewTaskAdded}
