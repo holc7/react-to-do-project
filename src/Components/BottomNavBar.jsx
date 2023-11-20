@@ -8,8 +8,9 @@ import allTasksAdd from "../assets/icons8-add-task-64.png"
 
 
 
-const BottomNavBar = ({ toggleAllTasks, toggleCreateTask, toggleVisibility, toggleComponentVisibility, quickTask, setQuickTask, handleQuickTask, setCurrentTask, handleFormSubmit, currentTask, }) => {
+const BottomNavBar = ({handleFormSubmit2, currentTask2, toggleAllTasks, toggleCreateTask, toggleVisibility, toggleComponentVisibility, quickTask, setQuickTask, handleQuickTask, setCurrentTask2, handleFormSubmit, currentTask, }) => {
   const [taskMenu, setTaskmenu] = useState(false)
+  
  
 const handleComponentSwitch = () => {
   toggleComponentVisibility()
@@ -34,10 +35,18 @@ const handleComponentSwitch = () => {
                     <h5>Add new task or a reminder </h5>
                     <p>Be productive today 😛</p>
                     <div className='glassmorphic-search-bar-cat-task-menu'>
-                    <form onSubmit={(e) => { e.preventDefault(); handleQuickTask(currentTask); }}>
-                      <input onChange={(e) => setCurrentTask(e.target.value)} value={currentTask} type='text' placeholder='Add a quick task...'></input>
-                      <img onClick={(e) => { e.preventDefault(); handleQuickTask(currentTask); }} src={sentMessage} alt='sent-message' style={{ width: "30px", marginRight: "15px"}}/>
-                    </form>
+                    <form onSubmit={handleFormSubmit2}>
+                  <input onChange={(e) => setCurrentTask2(e.target.value)} value={currentTask2} type='text' placeholder='Add a quick task...'></input>
+                  <img 
+  onClick={(e) => { 
+    e.preventDefault(); 
+    handleQuickTask(currentTask2); 
+    setCurrentTask2("");  // Reset the input field after adding the task
+  }} 
+  src={sentMessage} 
+  alt='sent-message' 
+  style={{ width: "30px", marginRight: "15px", cursor: "pointer"}}
+/>                </form>
                         </div>
                   </div>  
                 </div>

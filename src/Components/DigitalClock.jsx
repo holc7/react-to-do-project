@@ -32,7 +32,7 @@ const DigitalClock = () => {
         <div className="status-weather-container">
         <div className="row-container" style={{ display: 'flex'}}>
             <div className="clock-container"> 
-                <p className="clock-status mt-3">Good Morning!</p>
+                <p className="clock-status mt-3">Good evening!</p>
                 <div className="digital-clock" onClick={demoTime}>
                     {formatTime(time)}
                 </div>
