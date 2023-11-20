@@ -17,14 +17,13 @@ body {
 
 
 .container {
-  height: 680px;
+  min-height: 680px;
   display: flex;
   justify-content: center;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  min-height: 400px;
   width: 100%;
   min-width: 100%;
   align-content: center;
@@ -1000,7 +999,7 @@ cursor: pointer;
 }
 
 .create-task-container {
-  max-width: 100%; 
+  max-width: 110%; 
   max-height: 100vh;
  
 }
@@ -1077,7 +1076,7 @@ cursor: pointer;
   backdrop-filter: blur(10px); 
   border: 2px solid #51C1E9;
   /* position: absolute; */
-  max-width: 500px;
+  max-width: 520px;
   margin: auto;
   width: 100%;
 
@@ -1119,7 +1118,10 @@ cursor: pointer;
   outline: none;
 }
 
-
+.row  {
+  max-width: 363px;
+  min-width: 363px;
+}
 
 
 .task-menu-container {

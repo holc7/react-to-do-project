@@ -188,7 +188,7 @@ export default function CreateTask({toggleAllTasks, onAddTask, isNewTaskAdded, s
                             <FontAwesomeIcon className="test-fa" icon={faSuitcase} size="2xl"/>
                             
                             </div>   
-                        <h4 className="card-title-all-task-2">Lists</h4>
+                        <h4 className="card-title-all-task-2">Work</h4>
                         </div>
                        
                     </div>
