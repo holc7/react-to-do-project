@@ -26,6 +26,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   min-height: 400px;
   width: 100%;
+  min-width: 100%;
   align-content: center;
   text-align: center;
   position: relative;
@@ -300,6 +301,7 @@ body {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
 
 }
 
@@ -308,6 +310,7 @@ body {
   gap: 20px;
   left: 12%;
   top: 25%;
+
 }
 
 .card-title-all-task-1 {
@@ -545,11 +548,11 @@ width: 95%; */
   -webkit-backdrop-filter: blur(10px);
   padding: 10px;
   z-index: 1000;
-  overflow: hidden;
+ 
   width: 200px;
   transform: translateY(-3px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
+
 }
 .menu-container.show .dropdown-menu {
   opacity: 1;
@@ -564,10 +567,12 @@ width: 95%; */
 
 .dropdown-text  {
  margin-left: 10px;
+ cursor: pointer;
 }
 
 .dropdown-text-priority  {
   margin-left: 12px;
+  cursor: pointer;
  }
 
  .dropdown-text-delete  {
@@ -1051,6 +1056,7 @@ cursor: pointer;
 
 .second-all-tasks-container {
   padding: 0;
+  cursor: pointer;
   margin: 0;
 }
 
