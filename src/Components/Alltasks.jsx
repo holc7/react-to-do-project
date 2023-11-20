@@ -4,7 +4,7 @@ import {faEdit, faClock, faSort, faCheckCircle, faTrash } from '@fortawesome/fre
 import sentMessage from "../assets/send-mess.png";
 
 
-export default function Alltasks({sortTasksByDate, handleMainTaskDelete ,tasks }) {
+export default function Alltasks({deleteAllMainTasks , sortTasksByDate, handleMainTaskDelete ,tasks }) {
   const [showMenu, setShowMenu] = useState(false);
   const  [taskDropdown, setTaskDropdown] = useState(false)
   
@@ -34,7 +34,7 @@ export default function Alltasks({sortTasksByDate, handleMainTaskDelete ,tasks }
               </div>
               <div  className="menu-item">
                 <FontAwesomeIcon icon={faTrash} />
-                <span className='dropdown-text-delete'>Delete all</span>
+                <span onClick={deleteAllMainTasks} className='dropdown-text-delete'>Delete all</span>
               </div>
             </div>
           )}

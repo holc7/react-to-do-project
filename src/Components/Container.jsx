@@ -40,6 +40,11 @@ const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
     setMainTasks(sortedTasks)
     setSortByDate(!sortByDate)
   }
+  
+  const deleteAllMainTasks = () => {
+    setMainTasks([])
+    localStorage.setItem('mainTasks', JSON.stringify([]));
+  }
 
   const handleQuickTask = (newTask) => {
     if (newTask.trim() === "") {
@@ -108,6 +113,7 @@ const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
           />
           {showAllTasks && (
             <Alltasks
+            deleteAllMainTasks={deleteAllMainTasks}
               onAddTask={addMainTask}
               tasks={mainTasks}
               handleMainTaskDelete={handleMainTaskDelete}
@@ -127,6 +133,7 @@ const [quickTasks, setQuickTasks] = useState(initialQuickTasks);
             <>
               <DigitalClock />
               <HomepageTask
+               
                 quickTasks={quickTasks}
                 handleQuickTask={handleQuickTask}
                 handleFormSubmit={handleFormSubmit}

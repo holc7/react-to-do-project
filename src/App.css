@@ -577,6 +577,7 @@ width: 95%; */
 
  .dropdown-text-delete  {
   margin-left: 12px;
+  cursor: pointer;
  }
 
  .fa-priority {
